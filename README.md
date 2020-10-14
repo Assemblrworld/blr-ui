@@ -14,7 +14,7 @@ npm install github:Assemblrworld/blr-ui
 
 ## Usage
 
-![GitHub Logo](/docs/example2.png)
+![GitHub Logo](/docs/example2.jpg)
 
 ```bash
 SIZE VARIANT : [
