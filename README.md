@@ -40,7 +40,7 @@ class Example extends Component {
         onClick={()=>console.log('1 clicked')} 
         styles='primary'
         text='Primary'
-        additonalClass='btn'
+        extClass='btn'
       />
 
       {/* EXAMPLE SECONDARY BUTTON */}
@@ -48,7 +48,7 @@ class Example extends Component {
         onClick={()=>console.log('2 clicked')} 
         styles='secondary'
         text='Secondary'
-        additonalClass='btn'
+        extClass='btn'
       />
 
       {/* EXAMPLE DISABLED BUTTON */}
@@ -56,7 +56,7 @@ class Example extends Component {
         onClick={()=>console.log('3 clicked')} 
         text='Disabled'
         disabled={true}
-        additonalClass='btn'
+        extClass='btn'
       />
 
       {/* EXAMPLE TRANSPARENT BUTTON */}
@@ -64,7 +64,7 @@ class Example extends Component {
         onClick={()=>console.log('4 clicked')} 
         text='Transparent'
         styles='transparent'
-        additonalClass='btn'
+        extClass='btn'
       />
 
       {/* EXAMPLE WHITE BUTTON */}
@@ -72,7 +72,7 @@ class Example extends Component {
         onClick={()=>console.log('5 clicked')} 
         text='White'
         styles='white'
-        additonalClass='btn'
+        extClass='btn'
       />
 
       {/* EXAMPLE YELLOW BUTTON */}
@@ -81,7 +81,7 @@ class Example extends Component {
         text='Yellow'
         styles='color'
         color='yellow'
-        additonalClass='btn'
+        extClass='btn'
       />
 
       {/* EXAMPLE RED BUTTON */}
@@ -90,7 +90,7 @@ class Example extends Component {
         text='Red'
         styles='color'
         color='red'
-        additonalClass='btn'
+        extClass='btn'
       />
 
       {/* EXAMPLE BLUE BUTTON */}
@@ -99,7 +99,7 @@ class Example extends Component {
         text='Blue'
         styles='color'
         color='blue'
-        additonalClass='btn'
+        extClass='btn'
       />
 
       {/* EXAMPLE CYAN BUTTON */}
@@ -108,7 +108,7 @@ class Example extends Component {
         text='Cyan'
         styles='color'
         color='cyan'
-        additonalClass='btn'
+        extClass='btn'
       />
 
       {/* EXAMPLE BLACK BUTTON */}
@@ -117,7 +117,7 @@ class Example extends Component {
         text='Black'
         styles='color'
         color='black'
-        additonalClass='btn'
+        extClass='btn'
       />
 
       {/* EXAMPLE BUTTON WITH ICON */}
@@ -126,7 +126,7 @@ class Example extends Component {
         text='Sign in with Facebook'
         styles='color'
         color='#3B5998'
-        additonalClass='btn'
+        extClass='btn'
         Icon={()=> (
           <AiOutlineFacebook/>
         )}
@@ -136,7 +136,7 @@ class Example extends Component {
       <Button 
         onClick={()=>console.log('9 clicked')} 
         text='Large'
-        additonalClass='btn2'
+        extClass='btn2'
         
       />
 
@@ -145,7 +145,7 @@ class Example extends Component {
         onClick={()=>console.log('10 clicked')} 
         text='Medium'
         size='m'
-        additonalClass='btn2'
+        extClass='btn2'
       />
 
       {/* EXAMPLE SMALL BUTTON */}
@@ -153,7 +153,7 @@ class Example extends Component {
         onClick={()=>console.log('11 clicked')} 
         text='Small'
         size='s'
-        additonalClass='btn2'
+        extClass='btn2'
       />
 
       {/* EXAMPLE EXTRA SMALL BUTTON */}
@@ -161,21 +161,21 @@ class Example extends Component {
         onClick={()=>console.log('12 clicked')} 
         text='Extra Small'
         size='xs'
-        additonalClass='btn2'
+        extClass='btn2'
       />
 
       {/* EXAMPLE RECTANGLE BUTTON */}
       <Button 
         onClick={()=>console.log('1 clicked')} 
         shape='rectangle'
-        additonalClass='btn'
+        extClass='btn'
         text='Rectangle'
       />
 
       {/* EXAMPLE CIRCLE BUTTON */}
       <ButtonCircle
         onClick={()=>console.log('button clicked')}
-        additonalClass='btn'
+        extClass='btn'
         Icon = {()=> (
           <BsArrowLeft style={{fill:'white'}}/>
         )}
@@ -184,7 +184,7 @@ class Example extends Component {
       {/* EXAMPLE CIRCLE BUTTON MEDIUM SIZE */}
       <ButtonCircle
         onClick={()=>console.log('button clicked')}
-        additonalClass='btn'
+        extClass='btn'
         size='m'
         Icon = {()=> (
           <BsArrowLeft style={{fill:'white'}}/>
@@ -194,7 +194,7 @@ class Example extends Component {
       {/* EXAMPLE DISABLED CIRCLE BUTTON */}
       <ButtonCircle
         onClick={()=>console.log('button clicked')}
-        additonalClass='btn'
+        extClass='btn'
         disabled={true}
         Icon = {()=> (
           <BsArrowLeft style={{fill:'white'}}/>

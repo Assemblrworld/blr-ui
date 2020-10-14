@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './styles.module.css'
 
-const Button = ({text,onClick,additonalClass,color,styles,disabled,size,shape,Icon})  => {
+const Button = ({text,onClick,extClass,color,styles,disabled,size,shape,Icon})  => {
   var buttonStyle = style.btn
   var buttonColor = 'linear-gradient(105deg, #24B9E1 0%, #7166C4 100%)'
   var buttonDisabled = false
@@ -69,7 +69,7 @@ const Button = ({text,onClick,additonalClass,color,styles,disabled,size,shape,Ic
   return (
     <button 
       onClick={!buttonDisabled?onClick:null}
-      className={buttonStyle+' '+additonalClass} 
+      className={buttonStyle+' '+extClass} 
       style={{backgroundColor:buttonColor}}
       > 
         {Icon?
@@ -80,7 +80,7 @@ const Button = ({text,onClick,additonalClass,color,styles,disabled,size,shape,Ic
   )
 }
 
-const ButtonCircle = ({Icon,onClick,additonalClass,size,color,disabled}) => {
+const ButtonCircle = ({Icon,onClick,extClass,size,color,disabled}) => {
   var buttonStyle = ''
   var buttonColor = color 
   var buttonOpacity = 1
@@ -110,7 +110,7 @@ const ButtonCircle = ({Icon,onClick,additonalClass,size,color,disabled}) => {
     <div 
       
       onClick={!buttonDisabled?onClick:null}
-      className={buttonStyle+' '+additonalClass}
+      className={buttonStyle+' '+extClass}
       style={{backgroundColor:buttonColor,opacity:buttonOpacity}}>
       
       <Icon/>

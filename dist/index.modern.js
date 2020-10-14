@@ -5,7 +5,7 @@ var style = {"btn":"_styles-module__btn__1Pz2d","btn-circle":"_styles-module__bt
 const Button = ({
   text,
   onClick,
-  additonalClass,
+  extClass,
   color,
   styles,
   disabled,
@@ -85,7 +85,7 @@ const Button = ({
 
   return /*#__PURE__*/React.createElement("button", {
     onClick: !buttonDisabled ? onClick : null,
-    className: buttonStyle + ' ' + additonalClass,
+    className: buttonStyle + ' ' + extClass,
     style: {
       backgroundColor: buttonColor
     }
@@ -95,7 +95,7 @@ const Button = ({
 const ButtonCircle = ({
   Icon,
   onClick,
-  additonalClass,
+  extClass,
   size,
   color,
   disabled
@@ -127,7 +127,7 @@ const ButtonCircle = ({
 
   return /*#__PURE__*/React.createElement("div", {
     onClick: !buttonDisabled ? onClick : null,
-    className: buttonStyle + ' ' + additonalClass,
+    className: buttonStyle + ' ' + extClass,
     style: {
       backgroundColor: buttonColor,
       opacity: buttonOpacity

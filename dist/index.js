@@ -7,7 +7,7 @@ var style = {"btn":"_styles-module__btn__1Pz2d","btn-circle":"_styles-module__bt
 var Button = function Button(_ref) {
   var text = _ref.text,
       onClick = _ref.onClick,
-      additonalClass = _ref.additonalClass,
+      extClass = _ref.extClass,
       color = _ref.color,
       styles = _ref.styles,
       disabled = _ref.disabled,
@@ -86,7 +86,7 @@ var Button = function Button(_ref) {
 
   return /*#__PURE__*/React.createElement("button", {
     onClick: !buttonDisabled ? onClick : null,
-    className: buttonStyle + ' ' + additonalClass,
+    className: buttonStyle + ' ' + extClass,
     style: {
       backgroundColor: buttonColor
     }
@@ -96,7 +96,7 @@ var Button = function Button(_ref) {
 var ButtonCircle = function ButtonCircle(_ref2) {
   var Icon = _ref2.Icon,
       onClick = _ref2.onClick,
-      additonalClass = _ref2.additonalClass,
+      extClass = _ref2.extClass,
       size = _ref2.size,
       color = _ref2.color,
       disabled = _ref2.disabled;
@@ -127,7 +127,7 @@ var ButtonCircle = function ButtonCircle(_ref2) {
 
   return /*#__PURE__*/React.createElement("div", {
     onClick: !buttonDisabled ? onClick : null,
-    className: buttonStyle + ' ' + additonalClass,
+    className: buttonStyle + ' ' + extClass,
     style: {
       backgroundColor: buttonColor,
       opacity: buttonOpacity
