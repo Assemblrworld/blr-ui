@@ -9,7 +9,7 @@
 ## Install
 
 ```bash
-npm install --save blr-ui
+npm install github:Assemblrworld/blr-ui
 ```
 
 ## Usage
