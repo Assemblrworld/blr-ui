@@ -61,6 +61,28 @@ const Button = ({
     buttonStyle += ' ' + style['xsmall-btn'];
   }
 
+  switch (buttonColor) {
+    case 'red':
+      buttonColor = '#D9005C';
+      break;
+
+    case 'yellow':
+      buttonColor = '#F7BE2D';
+      break;
+
+    case 'blue':
+      buttonColor = '#354199';
+      break;
+
+    case 'cyan':
+      buttonColor = '#24B9E1';
+      break;
+
+    case 'black':
+      buttonColor = '#020726';
+      break;
+  }
+
   return /*#__PURE__*/React.createElement("button", {
     onClick: !buttonDisabled ? onClick : null,
     className: buttonStyle + ' ' + additonalClass,

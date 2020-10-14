@@ -49,7 +49,7 @@ const App = () => {
         onClick={()=>console.log('6 clicked')} 
         text='Yellow'
         styles='color'
-        color='#F7BE2D'
+        color='yellow'
         additonalClass='btn'
       />
 
@@ -57,7 +57,31 @@ const App = () => {
         onClick={()=>console.log('7 clicked')} 
         text='Red'
         styles='color'
-        color='#D9005C'
+        color='red'
+        additonalClass='btn'
+      />
+
+      <Button 
+        onClick={()=>console.log('7 clicked')} 
+        text='Blue'
+        styles='color'
+        color='blue'
+        additonalClass='btn'
+      />
+
+      <Button 
+        onClick={()=>console.log('7 clicked')} 
+        text='Cyan'
+        styles='color'
+        color='cyan'
+        additonalClass='btn'
+      />
+
+      <Button 
+        onClick={()=>console.log('7 clicked')} 
+        text='Black'
+        styles='color'
+        color='black'
         additonalClass='btn'
       />
 

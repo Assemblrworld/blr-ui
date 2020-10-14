@@ -32,7 +32,7 @@ code {
   padding-top: 20px;
   width: 100vw;
   height: max-content;
-  background: #020726;
+  background: linear-gradient(180deg, #FFFFFF 0%,  #F4F4F4 10%, #F4F4F4 15%, #787982 60%,#020726 100%);
 }
 
 
