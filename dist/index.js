@@ -276,7 +276,15 @@ var Alert = function Alert(_ref6) {
 
   if (visibility === true) {
     render = /*#__PURE__*/React.createElement("div", {
-      className: style['popup-overlay']
+      className: style['popup-overlay'],
+      style: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 999999999
+      }
     }, /*#__PURE__*/React.createElement("div", {
       className: style['alert-container']
     }, /*#__PURE__*/React.createElement("div", {
@@ -324,7 +332,15 @@ var Confirm = function Confirm(_ref7) {
 
   if (visibility === true) {
     render = /*#__PURE__*/React.createElement("div", {
-      className: style['popup-overlay']
+      className: style['popup-overlay'],
+      style: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 999999999
+      }
     }, /*#__PURE__*/React.createElement("div", {
       className: style['confirm-container']
     }, /*#__PURE__*/React.createElement("div", {
@@ -372,7 +388,9 @@ var Modal = function Modal(_ref8) {
       showHeader = _ref8.showHeader,
       showFooter = _ref8.showFooter,
       primaryButtonAction = _ref8.primaryButtonAction,
-      secondaryButtonAction = _ref8.secondaryButtonAction;
+      primaryButtonText = _ref8.primaryButtonText,
+      secondaryButtonAction = _ref8.secondaryButtonAction,
+      secondaryButtonText = _ref8.secondaryButtonText;
   var render = null;
 
   if (width === undefined) {
@@ -381,7 +399,15 @@ var Modal = function Modal(_ref8) {
 
   if (visibility === true) {
     render = /*#__PURE__*/React.createElement("div", {
-      className: style['popup-overlay']
+      className: style['popup-overlay'],
+      style: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 999999999
+      }
     }, /*#__PURE__*/React.createElement("div", {
       className: style['modal-container'],
       style: {
@@ -397,12 +423,12 @@ var Modal = function Modal(_ref8) {
       className: style['default-modal-footer']
     }, /*#__PURE__*/React.createElement(Button, {
       size: "s",
-      text: "Ok",
+      text: primaryButtonText,
       onClick: primaryButtonAction
     }), /*#__PURE__*/React.createElement(Button, {
       size: "s",
       styles: "transparent",
-      text: "Cancel",
+      text: secondaryButtonText,
       onClick: secondaryButtonAction
     }))) : null, closeButton !== false ? /*#__PURE__*/React.createElement(ai.AiFillCloseCircle, {
       className: style['close-btn'],

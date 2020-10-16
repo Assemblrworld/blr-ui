@@ -283,7 +283,15 @@ const Alert = ({
 
   if (visibility === true) {
     render = /*#__PURE__*/React.createElement("div", {
-      className: style['popup-overlay']
+      className: style['popup-overlay'],
+      style: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 999999999
+      }
     }, /*#__PURE__*/React.createElement("div", {
       className: style['alert-container']
     }, /*#__PURE__*/React.createElement("div", {
@@ -333,7 +341,15 @@ const Confirm = ({
 
   if (visibility === true) {
     render = /*#__PURE__*/React.createElement("div", {
-      className: style['popup-overlay']
+      className: style['popup-overlay'],
+      style: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 999999999
+      }
     }, /*#__PURE__*/React.createElement("div", {
       className: style['confirm-container']
     }, /*#__PURE__*/React.createElement("div", {
@@ -377,7 +393,9 @@ const Modal = ({
   showHeader,
   showFooter,
   primaryButtonAction,
-  secondaryButtonAction
+  primaryButtonText,
+  secondaryButtonAction,
+  secondaryButtonText
 }) => {
   var render = null;
 
@@ -387,7 +405,15 @@ const Modal = ({
 
   if (visibility === true) {
     render = /*#__PURE__*/React.createElement("div", {
-      className: style['popup-overlay']
+      className: style['popup-overlay'],
+      style: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 999999999
+      }
     }, /*#__PURE__*/React.createElement("div", {
       className: style['modal-container'],
       style: {
@@ -403,12 +429,12 @@ const Modal = ({
       className: style['default-modal-footer']
     }, /*#__PURE__*/React.createElement(Button, {
       size: "s",
-      text: "Ok",
+      text: primaryButtonText,
       onClick: primaryButtonAction
     }), /*#__PURE__*/React.createElement(Button, {
       size: "s",
       styles: "transparent",
-      text: "Cancel",
+      text: secondaryButtonText,
       onClick: secondaryButtonAction
     }))) : null, closeButton !== false ? /*#__PURE__*/React.createElement(AiFillCloseCircle, {
       className: style['close-btn'],

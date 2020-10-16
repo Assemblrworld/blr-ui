@@ -326,7 +326,7 @@ const Confirm = ({visibility, context, confirmAction, label, primaryButtonText, 
   return render
 }
 
-const Modal = ({visibility, width, headerLabel, bodyLabel, HeaderComponent, BodyComponent, FooterComponent, hideModal, closeButton, showHeader, showFooter, primaryButtonAction, secondaryButtonAction}) => {
+const Modal = ({visibility, width, headerLabel, bodyLabel, HeaderComponent, BodyComponent, FooterComponent, hideModal, closeButton, showHeader, showFooter, primaryButtonAction, primaryButtonText, secondaryButtonAction, secondaryButtonText}) => {
   var render = null 
   if(width === undefined){
     width = 320
@@ -357,13 +357,13 @@ const Modal = ({visibility, width, headerLabel, bodyLabel, HeaderComponent, Body
                   <div className={style['default-modal-footer']}>
                     <Button
                       size='s'
-                      text='Ok'
+                      text={primaryButtonText}
                       onClick={primaryButtonAction}
                     />
                     <Button
                       size='s'
                       styles='transparent'
-                      text='Cancel'
+                      text={secondaryButtonText}
                       onClick={secondaryButtonAction}
                     />
                   </div>
