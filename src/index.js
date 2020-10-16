@@ -253,7 +253,7 @@ const Alert = ({visibility, context, hideAlert, label, buttonText, Icon}) => {
   if(visibility === true){
     render = (
       <div 
-        className={style['popup-overlay']}>
+        className={style['popup-overlay']} style={{position:'fixed',top:0,left:0,right:0,bottom:0,zIndex:999999999}}>
           <div className={style['alert-container']}>
             <div className={style['body']}>
               {Icon?(<Icon/>):(<FiAlertTriangle style={{stroke:'red',width:20,height:20}}/>)}
@@ -296,7 +296,7 @@ const Confirm = ({visibility, context, confirmAction, label, primaryButtonText, 
   if(visibility === true){
     render = (
       <div 
-        className={style['popup-overlay']}>
+        className={style['popup-overlay']} style={{position:'fixed',top:0,left:0,right:0,bottom:0,zIndex:999999999}}>
           <div className={style['confirm-container']}>
             <div className={style['body']}>
               {Icon?(<Icon/>):(<FiAlertTriangle style={{stroke:'red',width:20,height:20}}/>)}
@@ -336,7 +336,7 @@ const Modal = ({visibility, width, headerLabel, bodyLabel, HeaderComponent, Body
   if(visibility === true){
     render = (
       <div 
-        className={style['popup-overlay']}>
+        className={style['popup-overlay']} style={{position:'fixed',top:0,left:0,right:0,bottom:0,zIndex:999999999}}>
           <div className={style['modal-container']} style={{width:width}}>
 
             {showHeader!==false?(
