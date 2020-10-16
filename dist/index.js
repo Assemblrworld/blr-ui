@@ -1,8 +1,9 @@
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var React = _interopDefault(require('react'));
+var fi = require('react-icons/fi');
 
-var style = {"btn":"_styles-module__btn__1Pz2d","btn-circle":"_styles-module__btn-circle__ZMOEZ","btn-circle-custom":"_styles-module__btn-circle-custom__38f37","square-btn":"_styles-module__square-btn__1HEK_","default-circle-btn":"_styles-module__default-circle-btn__39XKQ","medium-btn":"_styles-module__medium-btn__38YRm","medium-circle-btn":"_styles-module__medium-circle-btn__2qA6O","small-btn":"_styles-module__small-btn__2FH_1","small-circle-btn":"_styles-module__small-circle-btn__38yRp","xsmall-btn":"_styles-module__xsmall-btn__1F4aM","xsmall-circle-btn":"_styles-module__xsmall-circle-btn__1P2U1","primary-btn":"_styles-module__primary-btn__39bnp","secondary-btn":"_styles-module__secondary-btn__21664","disabled-btn":"_styles-module__disabled-btn__1hoGZ","transparent-btn":"_styles-module__transparent-btn__oBYU2","white-btn":"_styles-module__white-btn__DvBYY","color-btn":"_styles-module__color-btn__MHNEW"};
+var style = {"disabled":"_styles-module__disabled__2RWmX","btn":"_styles-module__btn__1Pz2d","btn-circle":"_styles-module__btn-circle__ZMOEZ","btn-circle-custom":"_styles-module__btn-circle-custom__38f37","square-btn":"_styles-module__square-btn__1HEK_","default-circle-btn":"_styles-module__default-circle-btn__39XKQ","medium-btn":"_styles-module__medium-btn__38YRm","medium-circle-btn":"_styles-module__medium-circle-btn__2qA6O","small-btn":"_styles-module__small-btn__2FH_1","small-circle-btn":"_styles-module__small-circle-btn__38yRp","xsmall-btn":"_styles-module__xsmall-btn__1F4aM","xsmall-circle-btn":"_styles-module__xsmall-circle-btn__1P2U1","primary-btn":"_styles-module__primary-btn__39bnp","secondary-btn":"_styles-module__secondary-btn__21664","disabled-btn":"_styles-module__disabled-btn__1hoGZ","transparent-btn":"_styles-module__transparent-btn__oBYU2","white-btn":"_styles-module__white-btn__DvBYY","color-btn":"_styles-module__color-btn__MHNEW","label-input":"_styles-module__label-input__32_3E","label-input-dark":"_styles-module__label-input-dark__2ZEov","form-disabled":"_styles-module__form-disabled__cD1yu","form-checkbox":"_styles-module__form-checkbox__3NosP","form-checkbox-dark":"_styles-module__form-checkbox-dark__3IIVU","form-radio":"_styles-module__form-radio__2uu7E","form-radio-dark":"_styles-module__form-radio-dark__2VXtv","alert-overlay":"_styles-module__alert-overlay__1mGr8","alert-container":"_styles-module__alert-container__2rI0b","body":"_styles-module__body__2mo3X","footer":"_styles-module__footer__24OKz","confirm-overlay":"_styles-module__confirm-overlay__1GhqT","confirm-container":"_styles-module__confirm-container__3K3_g"};
 
 var Button = function Button(_ref) {
   var text = _ref.text,
@@ -12,11 +13,13 @@ var Button = function Button(_ref) {
       styles = _ref.styles,
       disabled = _ref.disabled,
       size = _ref.size,
+      width = _ref.width,
       shape = _ref.shape,
       Icon = _ref.Icon;
   var buttonStyle = style.btn;
   var buttonColor = 'linear-gradient(105deg, #24B9E1 0%, #7166C4 100%)';
   var buttonDisabled = false;
+  var buttonWidth = 'max-content';
 
   if (disabled) {
     buttonStyle += ' ' + style['disabled-btn'];
@@ -84,11 +87,21 @@ var Button = function Button(_ref) {
       break;
   }
 
+  if (extClass) {
+    buttonStyle += ' ' + extClass;
+  }
+
+  if (width !== undefined) {
+    buttonWidth = width;
+  }
+
   return /*#__PURE__*/React.createElement("button", {
     onClick: !buttonDisabled ? onClick : null,
-    className: buttonStyle + ' ' + extClass,
+    className: buttonStyle,
+    disabled: disabled === true ? true : false,
     style: {
-      backgroundColor: buttonColor
+      backgroundColor: buttonColor,
+      width: buttonWidth
     }
   }, Icon ? /*#__PURE__*/React.createElement(Icon, null) : null, text);
 };
@@ -125,9 +138,13 @@ var ButtonCircle = function ButtonCircle(_ref2) {
     buttonStyle += ' ' + style['default-circle-btn'];
   }
 
+  if (extClass !== undefined) {
+    buttonStyle += ' ' + extClass;
+  }
+
   return /*#__PURE__*/React.createElement("div", {
     onClick: !buttonDisabled ? onClick : null,
-    className: buttonStyle + ' ' + extClass,
+    className: buttonStyle,
     style: {
       backgroundColor: buttonColor,
       opacity: buttonOpacity
@@ -135,6 +152,217 @@ var ButtonCircle = function ButtonCircle(_ref2) {
   }, /*#__PURE__*/React.createElement(Icon, null));
 };
 
+var Input = function Input(_ref3) {
+  var label = _ref3.label,
+      placeHolder = _ref3.placeHolder,
+      onChange = _ref3.onChange,
+      disabled = _ref3.disabled,
+      value = _ref3.value,
+      defaultValue = _ref3.defaultValue,
+      extClass = _ref3.extClass,
+      theme = _ref3.theme;
+  var inputPlaceHolder = '';
+  var inputDisabled = false;
+  var formStyle = style['label-input'];
+  var inputStyle = '';
+
+  if (theme === 'dark') {
+    formStyle = style['label-input-dark'];
+  }
+
+  if (extClass !== undefined) {
+    formStyle += ' ' + extClass;
+  }
+
+  if (disabled === true) {
+    inputDisabled = disabled;
+    inputStyle += ' ' + style['form-disabled'];
+  }
+
+  if (placeHolder) {
+    inputPlaceHolder = placeHolder;
+  }
+
+  return /*#__PURE__*/React.createElement("label", {
+    className: formStyle
+  }, label, /*#__PURE__*/React.createElement("input", {
+    defaultValue: defaultValue ? defaultValue : null,
+    value: value ? value : null,
+    disabled: inputDisabled,
+    onChange: onChange,
+    placeholder: inputPlaceHolder,
+    className: inputStyle
+  }));
+};
+
+var CheckBox = function CheckBox(_ref4) {
+  var label = _ref4.label,
+      desc = _ref4.desc,
+      onClick = _ref4.onClick,
+      disabled = _ref4.disabled,
+      extClass = _ref4.extClass,
+      theme = _ref4.theme;
+  var formStyle = style['form-checkbox'];
+  var formDisabled = false;
+
+  if (theme === 'dark') {
+    formStyle = style['form-checkbox-dark'];
+  }
+
+  if (disabled === true) {
+    formDisabled = true;
+    formStyle += ' ' + style.disabled;
+  }
+
+  if (extClass !== undefined) {
+    formStyle += ' ' + extClass;
+  }
+
+  return /*#__PURE__*/React.createElement("label", {
+    className: formStyle
+  }, /*#__PURE__*/React.createElement("input", {
+    disabled: formDisabled,
+    onClick: onClick,
+    type: "checkbox"
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, label), desc ? /*#__PURE__*/React.createElement("p", null, desc) : null));
+};
+
+var Radio = function Radio(_ref5) {
+  var label = _ref5.label,
+      desc = _ref5.desc,
+      onChange = _ref5.onChange,
+      name = _ref5.name,
+      disabled = _ref5.disabled,
+      extClass = _ref5.extClass,
+      theme = _ref5.theme;
+  var formStyle = style['form-radio'];
+  var formDisabled = false;
+
+  if (theme === 'dark') {
+    formStyle = style['form-radio-dark'];
+  }
+
+  if (disabled === true) {
+    formDisabled = true;
+    formStyle += ' ' + style.disabled;
+  }
+
+  if (extClass !== undefined) {
+    formStyle += ' ' + extClass;
+  }
+
+  return /*#__PURE__*/React.createElement("label", {
+    className: formStyle
+  }, /*#__PURE__*/React.createElement("input", {
+    disabled: formDisabled,
+    onChange: onChange,
+    type: "radio",
+    name: name
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, label), desc ? /*#__PURE__*/React.createElement("p", null, desc) : null));
+};
+
+var Alert = function Alert(_ref6) {
+  var visibility = _ref6.visibility,
+      hideAlert = _ref6.hideAlert,
+      label = _ref6.label,
+      buttonText = _ref6.buttonText,
+      Icon = _ref6.Icon;
+  var render = null;
+
+  if (buttonText === undefined) {
+    buttonText = 'Ok';
+  }
+
+  if (visibility === true) {
+    render = /*#__PURE__*/React.createElement("div", {
+      className: style['alert-overlay']
+    }, /*#__PURE__*/React.createElement("div", {
+      className: style['alert-container']
+    }, /*#__PURE__*/React.createElement("div", {
+      className: style['body']
+    }, Icon ? /*#__PURE__*/React.createElement(Icon, null) : /*#__PURE__*/React.createElement(fi.FiAlertTriangle, {
+      style: {
+        stroke: 'red',
+        width: 20,
+        height: 20
+      }
+    }), /*#__PURE__*/React.createElement("p", null, label)), /*#__PURE__*/React.createElement("div", {
+      className: style['footer']
+    }, /*#__PURE__*/React.createElement(Button, {
+      size: "s",
+      text: buttonText,
+      onClick: hideAlert
+    }))));
+  }
+
+  return render;
+};
+
+var Confirm = function Confirm(_ref7) {
+  var visibility = _ref7.visibility,
+      confirmAction = _ref7.confirmAction,
+      label = _ref7.label,
+      primaryButtonText = _ref7.primaryButtonText,
+      secondaryButtonText = _ref7.secondaryButtonText,
+      primaryButtonStyle = _ref7.primaryButtonStyle,
+      Icon = _ref7.Icon;
+  var render = null;
+  var button1Style = 'primary';
+
+  if (primaryButtonStyle === 'red') {
+    button1Style = 'color';
+  }
+
+  if (primaryButtonText === undefined) {
+    primaryButtonText = 'Yes';
+  }
+
+  if (secondaryButtonText === undefined) {
+    secondaryButtonText = 'No';
+  }
+
+  if (visibility === true) {
+    render = /*#__PURE__*/React.createElement("div", {
+      className: style['confirm-overlay']
+    }, /*#__PURE__*/React.createElement("div", {
+      className: style['confirm-container']
+    }, /*#__PURE__*/React.createElement("div", {
+      className: style['body']
+    }, Icon ? /*#__PURE__*/React.createElement(Icon, null) : /*#__PURE__*/React.createElement(fi.FiAlertTriangle, {
+      style: {
+        stroke: 'red',
+        width: 20,
+        height: 20
+      }
+    }), /*#__PURE__*/React.createElement("p", null, label)), /*#__PURE__*/React.createElement("div", {
+      className: style['footer']
+    }, /*#__PURE__*/React.createElement(Button, {
+      size: "s",
+      styles: button1Style,
+      color: primaryButtonStyle === 'red' ? 'red' : null,
+      text: primaryButtonText,
+      onClick: function onClick() {
+        return confirmAction(true);
+      }
+    }), /*#__PURE__*/React.createElement(Button, {
+      size: "s",
+      style: "",
+      text: secondaryButtonText,
+      onClick: function onClick() {
+        return confirmAction(false);
+      },
+      styles: "transparent"
+    }))));
+  }
+
+  return render;
+};
+
+exports.Alert = Alert;
 exports.Button = Button;
 exports.ButtonCircle = ButtonCircle;
+exports.CheckBox = CheckBox;
+exports.Confirm = Confirm;
+exports.Input = Input;
+exports.Radio = Radio;
 //# sourceMappingURL=index.js.map

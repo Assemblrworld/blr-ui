@@ -1,10 +1,12 @@
 import React from 'react'
 import style from './styles.module.css'
+import {FiAlertTriangle} from 'react-icons/fi'
 
-const Button = ({text,onClick,extClass,color,styles,disabled,size,shape,Icon})  => {
+const Button = ({text, onClick, extClass, color, styles, disabled, size, width, shape, Icon})  => {
   var buttonStyle = style.btn
   var buttonColor = 'linear-gradient(105deg, #24B9E1 0%, #7166C4 100%)'
   var buttonDisabled = false
+  var buttonWidth = 'max-content'
   if(disabled){
     buttonStyle += ' '+style['disabled-btn']
     buttonDisabled = disabled
@@ -65,12 +67,20 @@ const Button = ({text,onClick,extClass,color,styles,disabled,size,shape,Icon})  
       break;
   }
 
+  if(extClass){
+    buttonStyle += ' '+extClass
+  }
 
+  if(width!==undefined){
+    buttonWidth = width
+  }
+  
   return (
     <button 
       onClick={!buttonDisabled?onClick:null}
-      className={buttonStyle+' '+extClass} 
-      style={{backgroundColor:buttonColor}}
+      className={buttonStyle} 
+      disabled={disabled===true?true:false}
+      style={{backgroundColor:buttonColor,width:buttonWidth}}
       > 
         {Icon?
           <Icon/>
@@ -106,11 +116,15 @@ const ButtonCircle = ({Icon,onClick,extClass,size,color,disabled}) => {
     buttonStyle+=' '+style['default-circle-btn']
   }
 
+  if(extClass !== undefined){
+    buttonStyle += ' '+extClass
+  }
+
   return (
     <div 
       
       onClick={!buttonDisabled?onClick:null}
-      className={buttonStyle+' '+extClass}
+      className={buttonStyle}
       style={{backgroundColor:buttonColor,opacity:buttonOpacity}}>
       
       <Icon/>
@@ -118,7 +132,205 @@ const ButtonCircle = ({Icon,onClick,extClass,size,color,disabled}) => {
   )
 }
 
+const Input = ({label, placeHolder, onChange, disabled, value, defaultValue, extClass, theme}) => {
+  var inputPlaceHolder = ''
+  var inputDisabled = false
+  var formStyle = style['label-input'] 
+  var inputStyle = ''
+  
+  if(theme === 'dark'){
+    formStyle = style['label-input-dark']
+    //inputStyle = style['input-dark'] 
+  }
+  
+  if(extClass !== undefined){
+    formStyle += ' '+extClass
+  }
+
+  if(disabled === true){
+    inputDisabled = disabled
+    inputStyle += ' '+style['form-disabled']
+  }
+
+  if(placeHolder){
+    inputPlaceHolder = placeHolder
+  }
+
+  return (
+    <label 
+      className={formStyle}>
+      {label}
+      <input
+        defaultValue={defaultValue?defaultValue:null}
+        value={value?value:null}
+        disabled={inputDisabled}
+        onChange={onChange}
+        placeholder={inputPlaceHolder}
+        className={inputStyle}
+      />
+    </label>
+    
+  )
+}
+
+const CheckBox = ({label, desc , onClick, checked, disabled, extClass, theme}) => {
+  var formStyle = style['form-checkbox']
+  var formDisabled = false 
+
+  if(theme === 'dark'){
+    formStyle = style['form-checkbox-dark']
+  }
+
+  if(disabled === true){
+    formDisabled = true
+    formStyle += ' '+style.disabled
+  }
+
+  if(extClass !== undefined){
+    formStyle += ' '+extClass
+  }
+
+  return (
+    <label className={formStyle}>
+      <input
+        disabled={formDisabled}
+        onClick={onClick}
+        type='checkbox'
+      />
+      <div>
+        <p>{label}</p>
+        {desc?(
+          <p>{desc}</p>
+        ):null}
+      </div>
+    </label>
+  )
+}
+
+const Radio = ({label, desc , onChange, name, checked, disabled, extClass, theme}) => {
+  var formStyle = style['form-radio']
+  var formDisabled = false 
+
+  if(theme === 'dark'){
+    formStyle = style['form-radio-dark']
+  }
+
+  if(disabled === true){
+    formDisabled = true
+    formStyle += ' '+style.disabled
+  }
+
+  if(extClass !== undefined){
+    formStyle += ' '+extClass
+  }
+
+  return (
+    <label className={formStyle}>
+      <input
+        disabled={formDisabled}
+        onChange={onChange}
+        type='radio'
+        name={name}
+      />
+      <div>
+        <p>{label}</p>
+        {desc?(
+          <p>{desc}</p>
+        ):null}
+      </div>
+    </label>
+  )
+}
+
+const Alert = ({visibility, context, hideAlert, label, buttonText, Icon}) => {
+  var render = null
+
+  if(buttonText === undefined){
+    buttonText = 'Ok'
+  }
+  
+  if(visibility === true){
+    render = (
+      <div 
+        className={style['alert-overlay']}>
+          <div className={style['alert-container']}>
+            <div className={style['body']}>
+              {Icon?(<Icon/>):(<FiAlertTriangle style={{stroke:'red',width:20,height:20}}/>)}
+              <p>{label}</p>
+            </div>
+            <div className={style['footer']}>
+              <Button
+                size='s'
+                text={buttonText}
+                onClick={hideAlert}
+              />
+            </div>
+          </div>
+      </div>
+    )
+  }
+
+  return render
+}
+
+const Confirm = ({visibility, context, confirmAction, label, primaryButtonText, secondaryButtonText, primaryButtonStyle, Icon}) => {
+  var render = null
+  
+  var button1Style = 'primary'
+  var buttonColor = ''
+
+  if(primaryButtonStyle === 'red'){
+    button1Style = 'color'
+    buttonColor = 'red'
+  }
+
+  if(primaryButtonText===undefined){
+    primaryButtonText = 'Yes'
+  }
+
+  if(secondaryButtonText===undefined){
+    secondaryButtonText = 'No'
+  }
+  
+  if(visibility === true){
+    render = (
+      <div 
+        className={style['confirm-overlay']}>
+          <div className={style['confirm-container']}>
+            <div className={style['body']}>
+              {Icon?(<Icon/>):(<FiAlertTriangle style={{stroke:'red',width:20,height:20}}/>)}
+              <p>{label}</p>
+            </div>
+            <div className={style['footer']}>
+              <Button
+                size='s'
+                styles={button1Style}
+                color={primaryButtonStyle==='red'?'red':null}
+                text={primaryButtonText}
+                onClick={()=>confirmAction(true)}
+              />
+              <Button
+                size='s'
+                style=''
+                text={secondaryButtonText}
+                onClick={()=>confirmAction(false)}
+                styles='transparent'
+              />
+            </div>
+          </div>
+      </div>
+    )
+  }
+
+  return render
+}
+
 export {
   Button,
-  ButtonCircle
+  ButtonCircle,
+  Input,
+  CheckBox,
+  Radio,
+  Alert,
+  Confirm
 }
