@@ -1,6 +1,7 @@
 import React from 'react'
 import style from './styles.module.css'
 import {FiAlertTriangle} from 'react-icons/fi'
+import {AiFillCloseCircle} from 'react-icons/ai'
 
 const Button = ({text, onClick, extClass, color, styles, disabled, size, width, shape, Icon})  => {
   var buttonStyle = style.btn
@@ -252,7 +253,7 @@ const Alert = ({visibility, context, hideAlert, label, buttonText, Icon}) => {
   if(visibility === true){
     render = (
       <div 
-        className={style['alert-overlay']}>
+        className={style['popup-overlay']}>
           <div className={style['alert-container']}>
             <div className={style['body']}>
               {Icon?(<Icon/>):(<FiAlertTriangle style={{stroke:'red',width:20,height:20}}/>)}
@@ -295,7 +296,7 @@ const Confirm = ({visibility, context, confirmAction, label, primaryButtonText, 
   if(visibility === true){
     render = (
       <div 
-        className={style['confirm-overlay']}>
+        className={style['popup-overlay']}>
           <div className={style['confirm-container']}>
             <div className={style['body']}>
               {Icon?(<Icon/>):(<FiAlertTriangle style={{stroke:'red',width:20,height:20}}/>)}
@@ -325,6 +326,70 @@ const Confirm = ({visibility, context, confirmAction, label, primaryButtonText, 
   return render
 }
 
+const Modal = ({visibility, width, headerLabel, bodyLabel, HeaderComponent, BodyComponent, FooterComponent, hideModal, closeButton, showHeader, showFooter, primaryButtonAction, secondaryButtonAction}) => {
+  var render = null 
+  if(width === undefined){
+    width = 320
+  }
+  
+
+  if(visibility === true){
+    render = (
+      <div 
+        className={style['popup-overlay']}>
+          <div className={style['modal-container']} style={{width:width}}>
+
+            {showHeader!==false?(
+              <div className={style['header']}>
+                {HeaderComponent?(<HeaderComponent/>):null}
+                {headerLabel?<p>{headerLabel}</p>:null}
+              </div>
+            ):null}
+
+            <div className={style['body']}>
+              {BodyComponent?(<BodyComponent/>):null}
+              {bodyLabel?<p>{bodyLabel}</p>:null}
+            </div>
+            
+            {showFooter!==false?(
+              <div className={style['footer']}>
+                {FooterComponent?(<FooterComponent/>):(
+                  <div className={style['default-modal-footer']}>
+                    <Button
+                      size='s'
+                      text='Ok'
+                      onClick={primaryButtonAction}
+                    />
+                    <Button
+                      size='s'
+                      styles='transparent'
+                      text='Cancel'
+                      onClick={secondaryButtonAction}
+                    />
+                  </div>
+                )}
+              </div>
+            ):null}
+
+            
+
+            {closeButton!==false?(
+              <AiFillCloseCircle
+                className={style['close-btn']}
+                style={{fill:'#67697C'}}
+                onClick={hideModal}
+              />
+            ):null}
+            
+
+          </div>
+      </div>
+    )
+  }
+
+  return render
+}
+
 export {
   Button,
   ButtonCircle,
@@ -332,5 +397,6 @@ export {
   CheckBox,
   Radio,
   Alert,
-  Confirm
+  Confirm,
+  Modal
 }

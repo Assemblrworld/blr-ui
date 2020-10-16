@@ -572,12 +572,7 @@ button {
 }
 
 
-/* ALERT STYLE */
-/* ALERT STYLE */
-/* ALERT STYLE */
-/* ALERT STYLE */
-
-.alert-overlay {
+.popup-overlay {
   z-index: 9999;
   position: fixed;
   top: 0;
@@ -590,6 +585,11 @@ button {
   justify-content: center;
   align-items: center;
 }
+
+/* ALERT STYLE */
+/* ALERT STYLE */
+/* ALERT STYLE */
+/* ALERT STYLE */
 
 .alert-container {
   width: 320px;
@@ -648,20 +648,6 @@ button {
 /* CONFIRM STYLE */
 /* CONFIRM STYLE */
 
-.confirm-overlay {
-  z-index: 9999;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,0.4);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .confirm-container {
   width: 320px;
   max-width: 320px;
@@ -711,6 +697,84 @@ button {
   margin-bottom: 0px;
   padding: 0 40px;
 }
+
+
+/*<============================ MODAL STYLE =========================================> */
+/*<============================ MODAL STYLE =========================================> */
+/*<============================ MODAL STYLE =========================================> */
+/*<============================ MODAL STYLE =========================================> */
+
+.modal-container {
+  min-height: 100px;
+  height: max-content;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 5px 15px #00000033;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  position: relative;
+}
+
+.modal-container > .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  min-height: 20px;
+}
+
+.modal-container > .header{
+  font-size: 16px;
+  color: #001741;
+  font-weight: bold;
+  text-align: justify;
+  width: calc(100% - 40px);
+  padding: 20px;
+  box-sizing: content-box;
+  border-bottom: 1px solid #F4F4F4;
+}
+
+.modal-container > .body{
+  font-size: 14px;
+  color: #001741;
+  font-weight: 500;
+  text-align: justify;
+  width: calc(100% - 40px);
+  padding: 20px 20px 30px 20px;
+  box-sizing: content-box;
+}
+
+.modal-container > .footer{
+  width: calc(100% - 40px);
+  height: max-content;
+  padding: 15px 20px 15px 20px;
+
+  border-top: 1px solid #F4F4F4;
+}
+
+.default-modal-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.default-modal-footer > button {
+  margin-bottom: 0 !important;
+  margin-right: 15px;
+}
+
+
+
 
 @media only screen and (max-width: 320px) {
   .alert-container {

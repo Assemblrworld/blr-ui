@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button, ButtonCircle, Input, CheckBox, Radio, Alert, Confirm  }  from 'blr-ui'
+import { Button, ButtonCircle, Input, CheckBox, Radio, Alert, Confirm, Modal  }  from 'blr-ui'
 import 'blr-ui/dist/index.css'
 import {AiOutlineFacebook} from 'react-icons/ai'
 import {BsArrowLeft} from 'react-icons/bs'
@@ -11,7 +11,7 @@ const Component = ({style,theme, context}) => {
   var exampleString = ''
   var exampleHeaderStyle = 'example-header'
   var exampleStyle = 'example'
-  const {alertVisibility, confirmVisibility} = context.state
+  const {alertVisibility, confirmVisibility, modalVisibility, modal1Visibility, modal2Visibility} = context.state
   
 
   if(theme === 'dark'){
@@ -26,7 +26,7 @@ const Component = ({style,theme, context}) => {
       style={style}
       className='child'>
 
-        {/* SHOW ALERT BUTTON */}
+        {/* SHOW ALERT DIALOG */}
         <Button 
           width='100%'
           onClick={()=>context.setState({alertVisibility:!alertVisibility})} 
@@ -35,7 +35,7 @@ const Component = ({style,theme, context}) => {
           extClass='btn'
         />
 
-        {/* SHOW CONFIRM BUTTON */}
+        {/* SHOW CONFIRM DIALOG */}
         <Button 
           width='100%'
           onClick={()=>context.setState({confirmVisibility:!confirmVisibility})} 
@@ -43,6 +43,35 @@ const Component = ({style,theme, context}) => {
           text='Show Confirm'
           extClass='btn'
         />
+
+        {/* SHOW MODAL POPUP */}
+        <Button 
+          width='100%'
+          onClick={()=>context.setState({modalVisibility:!modalVisibility})} 
+          styles='primary'
+          text='Show Default Modal Template'
+          extClass='btn'
+        />
+
+        {/* SHOW MODAL POPUP */}
+        <Button 
+          width='100%'
+          onClick={()=>context.setState({modal1Visibility:!modal1Visibility})} 
+          styles='primary'
+          text='Show Modal Template body only'
+          extClass='btn'
+        />
+
+        {/* SHOW MODAL POPUP */}
+        <Button 
+          width='100%'
+          onClick={()=>context.setState({modal2Visibility:!modal2Visibility})} 
+          styles='primary'
+          text='Show Modal with custom component'
+          extClass='btn'
+        />
+
+
       
         {/* EXAMPLE PRIMARY BUTTON */}
         <Button 
@@ -421,11 +450,14 @@ class App extends React.Component {
     this.state = {
       alertVisibility:false,
       confirmVisibility:false,
+      modalVisibility:false,
+      modal1Visibility:false,
+      modal2Visibility:false,
     }
   }
 
   render(){
-    const {alertVisibility, confirmVisibility} = this.state
+    const {alertVisibility, confirmVisibility, modalVisibility, modal1Visibility, modal2Visibility} = this.state
     const context = this
     return (
       <div className='parent'>
@@ -453,6 +485,59 @@ class App extends React.Component {
             console.log(value)
             context.setState({confirmVisibility:false})
           }}
+        />
+
+        <Modal
+          width={400}
+          visibility={modalVisibility}
+          context={context}
+          headerLabel='Lorem ipsum dolor sit amet'
+          bodyLabel='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit ut neque quis condimentum. Phasellus sagittis aliquet vulputate. Sed non maximus orci'
+          hideModal={()=>context.setState({modalVisibility:false})}
+          primaryButtonAction={()=>context.setState({modalVisibility:false})}
+          secondaryButtonAction={()=>context.setState({modalVisibility:false})}
+          modalAction={()=>console.log('modal action')}
+        />
+
+        <Modal
+          width={400}
+          visibility={modal1Visibility}
+          context={context}
+          headerLabel='Lorem ipsum dolor sit amet'
+          showHeader={false}
+          showFooter={false}
+          bodyLabel='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit ut neque quis condimentum. Phasellus sagittis aliquet vulputate. Sed non maximus orci'
+          hideModal={()=>context.setState({modal1Visibility:false})}
+          primaryButtonAction={()=>context.setState({modal1Visibility:false})}
+          secondaryButtonAction={()=>context.setState({modal1Visibility:false})}
+          modalAction={()=>console.log('modal action')}
+        />
+
+        <Modal
+          width={400}
+          visibility={modal2Visibility}
+          context={context}
+          HeaderComponent={()=>(
+            <div>
+              THIS IS CUSTOM HEADER
+            </div>
+          )}
+
+          BodyComponent={()=>(
+            <div>
+              THIS IS CUSTOM BODY
+            </div>
+          )}
+
+          FooterComponent={()=>(
+            <div>
+              THIS IS CUSTOM FOOTER
+            </div>
+          )}
+          hideModal={()=>context.setState({modal2Visibility:false})}
+          primaryButtonAction={()=>context.setState({modal2Visibility:false})}
+          secondaryButtonAction={()=>context.setState({modal2Visibility:false})}
+          modalAction={()=>console.log('modal action')}
         />
 
       </div>
