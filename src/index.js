@@ -3,7 +3,7 @@ import style from './styles.module.css'
 import {FiAlertTriangle} from 'react-icons/fi'
 import {AiFillCloseCircle} from 'react-icons/ai'
 
-const Button = ({text, onClick, extClass, color, styles, disabled, size, width, shape, Icon})  => {
+const Button = ({text, onClick, extClass, color, styles, disabled, size, width, shape, Icon, margin})  => {
   var buttonStyle = style.btn
   var buttonColor = 'linear-gradient(105deg, #24B9E1 0%, #7166C4 100%)'
   var buttonDisabled = false
@@ -40,11 +40,11 @@ const Button = ({text, onClick, extClass, color, styles, disabled, size, width, 
   }
 
   if(size === 'm'){
-    buttonStyle+=' '+style['medium-btn']
+    buttonStyle+=' '+style['medium-size']
   } else if(size === 's'){
-    buttonStyle+=' '+style['small-btn']
+    buttonStyle+=' '+style['small-size']
   } else if(size === 'xs'){
-    buttonStyle+=' '+style['xsmall-btn']
+    buttonStyle+=' '+style['xsmall-size']
   }
 
   switch (buttonColor) {
@@ -75,13 +75,17 @@ const Button = ({text, onClick, extClass, color, styles, disabled, size, width, 
   if(width!==undefined){
     buttonWidth = width
   }
+
+  if(margin===undefined){
+    margin=[0,0,20,0]
+  }
   
   return (
     <button 
       onClick={!buttonDisabled?onClick:null}
       className={buttonStyle} 
       disabled={disabled===true?true:false}
-      style={{backgroundColor:buttonColor,width:buttonWidth}}
+      style={{backgroundColor:buttonColor,width:buttonWidth,marginTop:margin[0],marginRight:margin[1],marginBottom:margin[2],marginLeft:margin[3]}}
       > 
         {Icon?
           <Icon/>
@@ -91,7 +95,7 @@ const Button = ({text, onClick, extClass, color, styles, disabled, size, width, 
   )
 }
 
-const ButtonCircle = ({Icon,onClick,extClass,size,color,disabled}) => {
+const ButtonCircle = ({Icon, onClick, extClass, size, color, disabled, margin}) => {
   var buttonStyle = ''
   var buttonColor = color 
   var buttonOpacity = 1
@@ -121,26 +125,35 @@ const ButtonCircle = ({Icon,onClick,extClass,size,color,disabled}) => {
     buttonStyle += ' '+extClass
   }
 
+  if(margin===undefined){
+    margin=[0,0,20,0]
+  }
+
   return (
     <div 
-      
       onClick={!buttonDisabled?onClick:null}
       className={buttonStyle}
-      style={{backgroundColor:buttonColor,opacity:buttonOpacity}}>
+      style={{backgroundColor:buttonColor,opacity:buttonOpacity, marginTop:margin[0],marginRight:margin[1],marginBottom:margin[2],marginLeft:margin[3]}}>
       
       <Icon/>
     </div>
   )
 }
 
-const Input = ({label, placeHolder, onChange, disabled, value, defaultValue, extClass, theme}) => {
+const Input = ({label, type, size, placeHolder, onChange, disabled, value, defaultValue, extClass, theme, margin}) => {
   var inputPlaceHolder = ''
   var inputDisabled = false
   var formStyle = style['label-input'] 
   var inputStyle = ''
+
+  if(type===undefined){
+    type = 'text'
+  }
   
   if(theme === 'dark'){
-    formStyle = style['label-input-dark']
+    //formStyle = style['label-input-dark']
+    formStyle += ' '+style['dark-mode']
+    inputStyle += ' '+style['dark-mode']
     //inputStyle = style['input-dark'] 
   }
   
@@ -148,33 +161,54 @@ const Input = ({label, placeHolder, onChange, disabled, value, defaultValue, ext
     formStyle += ' '+extClass
   }
 
-  if(disabled === true){
-    inputDisabled = disabled
-    inputStyle += ' '+style['form-disabled']
-  }
+  
 
   if(placeHolder){
     inputPlaceHolder = placeHolder
   }
 
+  if(size !== undefined){
+    if(size === 'm'){
+      inputStyle += ' '+style['medium-size']
+    } else if( size === 's'){
+      inputStyle += ' '+style['small-size']
+    } else if( size === 'xs'){
+      inputStyle += ' '+style['xsmall-size']
+    }
+  }
+
+  if(disabled === true){
+    inputDisabled = disabled
+    formStyle += ' '+style['disabled']
+    inputStyle += ' '+style['form-disabled']
+  }
+
+  if(margin===undefined){
+    margin=[0,0,20,0]
+  }
+
   return (
     <label 
-      className={formStyle}>
+      className={formStyle}
+      style={{marginTop:margin[0],marginRight:margin[1],marginBottom:margin[2],marginLeft:margin[3]}}
+      >
       {label}
       <input
+        type={type}
         defaultValue={defaultValue?defaultValue:null}
         value={value?value:null}
         disabled={inputDisabled}
         onChange={onChange}
         placeholder={inputPlaceHolder}
         className={inputStyle}
+
       />
     </label>
     
   )
 }
 
-const CheckBox = ({label, desc , onClick, checked, disabled, extClass, theme}) => {
+const CheckBox = ({label, desc , onClick, checked, disabled, extClass, theme, margin}) => {
   var formStyle = style['form-checkbox']
   var formDisabled = false 
 
@@ -191,12 +225,22 @@ const CheckBox = ({label, desc , onClick, checked, disabled, extClass, theme}) =
     formStyle += ' '+extClass
   }
 
+  if(margin===undefined){
+    margin=[0,0,20,0]
+  }
+  if(checked ===undefined){
+    checked = false
+  }
+
   return (
-    <label className={formStyle}>
+    <label 
+    style={{marginTop:margin[0],marginRight:margin[1],marginBottom:margin[2],marginLeft:margin[3]}}
+      className={formStyle}>
       <input
         disabled={formDisabled}
         onClick={onClick}
         type='checkbox'
+        defaultChecked={checked}
       />
       <div>
         <p>{label}</p>
@@ -208,7 +252,7 @@ const CheckBox = ({label, desc , onClick, checked, disabled, extClass, theme}) =
   )
 }
 
-const Radio = ({label, desc , onChange, name, checked, disabled, extClass, theme}) => {
+const Radio = ({label, desc , onChange, name, checked, disabled, extClass, theme, margin}) => {
   var formStyle = style['form-radio']
   var formDisabled = false 
 
@@ -225,13 +269,24 @@ const Radio = ({label, desc , onChange, name, checked, disabled, extClass, theme
     formStyle += ' '+extClass
   }
 
+  if(margin===undefined){
+    margin=[0,0,20,0]
+  }
+
+  if(checked ===undefined){
+    checked = false
+  }
+
   return (
-    <label className={formStyle}>
+    <label 
+      style={{marginTop:margin[0],marginRight:margin[1],marginBottom:margin[2],marginLeft:margin[3]}} 
+      className={formStyle}>
       <input
         disabled={formDisabled}
         onChange={onChange}
         type='radio'
         name={name}
+        defaultChecked={checked}
       />
       <div>
         <p>{label}</p>
@@ -257,7 +312,7 @@ const Alert = ({visibility, context, hideAlert, label, buttonText, Icon}) => {
           <div className={style['alert-container']}>
             <div className={style['body']}>
               {Icon?(<Icon/>):(<FiAlertTriangle style={{stroke:'red',width:20,height:20}}/>)}
-              <p>{label}</p>
+              <span>{label}</span>
             </div>
             <div className={style['footer']}>
               <Button
@@ -300,7 +355,7 @@ const Confirm = ({visibility, context, confirmAction, label, primaryButtonText, 
           <div className={style['confirm-container']}>
             <div className={style['body']}>
               {Icon?(<Icon/>):(<FiAlertTriangle style={{stroke:'red',width:20,height:20}}/>)}
-              <p>{label}</p>
+              <span>{label}</span>
             </div>
             <div className={style['footer']}>
               <Button
@@ -332,6 +387,13 @@ const Modal = ({visibility, width, headerLabel, bodyLabel, HeaderComponent, Body
     width = 320
   }
   
+  if(primaryButtonText === undefined){
+    primaryButtonText = 'Yes'
+  }
+
+  if(secondaryButtonText === undefined){
+    secondaryButtonText = 'No'
+  }
 
   if(visibility === true){
     render = (
@@ -342,13 +404,13 @@ const Modal = ({visibility, width, headerLabel, bodyLabel, HeaderComponent, Body
             {showHeader!==false?(
               <div className={style['header']}>
                 {HeaderComponent?(<HeaderComponent/>):null}
-                {headerLabel?<p>{headerLabel}</p>:null}
+                {headerLabel?<span>{headerLabel}</span>:null}
               </div>
             ):null}
 
             <div className={style['body']}>
               {BodyComponent?(<BodyComponent/>):null}
-              {bodyLabel?<p>{bodyLabel}</p>:null}
+              {bodyLabel?<span>{bodyLabel}</span>:null}
             </div>
             
             {showFooter!==false?(
@@ -356,6 +418,7 @@ const Modal = ({visibility, width, headerLabel, bodyLabel, HeaderComponent, Body
                 {FooterComponent?(<FooterComponent/>):(
                   <div className={style['default-modal-footer']}>
                     <Button
+                      margin={[0,10,0,0]}
                       size='s'
                       text={primaryButtonText}
                       onClick={primaryButtonAction}

@@ -336,6 +336,38 @@ const Component = ({style,theme, context}) => {
 
         <Input
           theme={theme==='dark'?'dark':null}
+          label='Form Password'
+          placeHolder='Insert Password'
+          type='password'
+          onChange={(e)=>console.log(e.target.value)}
+        />
+
+        <Input
+          theme={theme==='dark'?'dark':null}
+          label='Form medium'
+          size='m'
+          placeHolder='Insert Name'
+          onChange={(e)=>console.log(e.target.value)}
+        />
+
+        <Input
+          theme={theme==='dark'?'dark':null}
+          label='Form small'
+          size='s'
+          placeHolder='Insert Name'
+          onChange={(e)=>console.log(e.target.value)}
+        />
+
+        <Input
+          theme={theme==='dark'?'dark':null}
+          label='Form xsmall'
+          size='xs'
+          placeHolder='Insert Name'
+          onChange={(e)=>console.log(e.target.value)}
+        />
+
+        <Input
+          theme={theme==='dark'?'dark':null}
           label='Disabled Form'
           placeHolder='Insert Name'
           disabled={true}
@@ -352,6 +384,8 @@ const Component = ({style,theme, context}) => {
   disabled={true/false} Optional
   defaultValue={Optional}
   value={optional}
+  size={ default , m , s , xs}
+  type={'HTML INPUT TYPE'}
   onChange={(e)=>console.log(e.target.value)}`+
   exampleString+`
 />`}
@@ -495,7 +529,9 @@ class App extends React.Component {
           bodyLabel='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit ut neque quis condimentum. Phasellus sagittis aliquet vulputate. Sed non maximus orci'
           hideModal={()=>context.setState({modalVisibility:false})}
           primaryButtonAction={()=>context.setState({modalVisibility:false})}
+          primaryButtonText={'Yes'}
           secondaryButtonAction={()=>context.setState({modalVisibility:false})}
+          secondaryButtonText={'No'}
           modalAction={()=>console.log('modal action')}
         />
 

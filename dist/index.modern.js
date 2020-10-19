@@ -2,7 +2,7 @@ import React from 'react';
 import { FiAlertTriangle } from 'react-icons/fi';
 import { AiFillCloseCircle } from 'react-icons/ai';
 
-var style = {"disabled":"_styles-module__disabled__2RWmX","btn":"_styles-module__btn__1Pz2d","btn-circle":"_styles-module__btn-circle__ZMOEZ","btn-circle-custom":"_styles-module__btn-circle-custom__38f37","square-btn":"_styles-module__square-btn__1HEK_","default-circle-btn":"_styles-module__default-circle-btn__39XKQ","medium-btn":"_styles-module__medium-btn__38YRm","medium-circle-btn":"_styles-module__medium-circle-btn__2qA6O","small-btn":"_styles-module__small-btn__2FH_1","small-circle-btn":"_styles-module__small-circle-btn__38yRp","xsmall-btn":"_styles-module__xsmall-btn__1F4aM","xsmall-circle-btn":"_styles-module__xsmall-circle-btn__1P2U1","primary-btn":"_styles-module__primary-btn__39bnp","secondary-btn":"_styles-module__secondary-btn__21664","disabled-btn":"_styles-module__disabled-btn__1hoGZ","transparent-btn":"_styles-module__transparent-btn__oBYU2","white-btn":"_styles-module__white-btn__DvBYY","color-btn":"_styles-module__color-btn__MHNEW","label-input":"_styles-module__label-input__32_3E","label-input-dark":"_styles-module__label-input-dark__2ZEov","form-disabled":"_styles-module__form-disabled__cD1yu","form-checkbox":"_styles-module__form-checkbox__3NosP","form-checkbox-dark":"_styles-module__form-checkbox-dark__3IIVU","form-radio":"_styles-module__form-radio__2uu7E","form-radio-dark":"_styles-module__form-radio-dark__2VXtv","popup-overlay":"_styles-module__popup-overlay__1oBGy","alert-container":"_styles-module__alert-container__2rI0b","body":"_styles-module__body__2mo3X","footer":"_styles-module__footer__24OKz","confirm-container":"_styles-module__confirm-container__3K3_g","modal-container":"_styles-module__modal-container__1DUXS","close-btn":"_styles-module__close-btn__3viwp","header":"_styles-module__header__1aDvk","default-modal-footer":"_styles-module__default-modal-footer__2R1Fn"};
+var style = {"disabled":"_styles-module__disabled__2RWmX","medium-size":"_styles-module__medium-size__2LpS7","small-size":"_styles-module__small-size__1Dccc","xsmall-size":"_styles-module__xsmall-size__2HSWc","dark-mode":"_styles-module__dark-mode__3yj9P","btn":"_styles-module__btn__1Pz2d","btn-circle":"_styles-module__btn-circle__ZMOEZ","btn-circle-custom":"_styles-module__btn-circle-custom__38f37","square-btn":"_styles-module__square-btn__1HEK_","default-circle-btn":"_styles-module__default-circle-btn__39XKQ","medium-circle-btn":"_styles-module__medium-circle-btn__2qA6O","small-circle-btn":"_styles-module__small-circle-btn__38yRp","xsmall-btn":"_styles-module__xsmall-btn__1F4aM","xsmall-circle-btn":"_styles-module__xsmall-circle-btn__1P2U1","primary-btn":"_styles-module__primary-btn__39bnp","secondary-btn":"_styles-module__secondary-btn__21664","disabled-btn":"_styles-module__disabled-btn__1hoGZ","transparent-btn":"_styles-module__transparent-btn__oBYU2","white-btn":"_styles-module__white-btn__DvBYY","color-btn":"_styles-module__color-btn__MHNEW","label-input":"_styles-module__label-input__32_3E","label-input-dark":"_styles-module__label-input-dark__2ZEov","form-disabled":"_styles-module__form-disabled__cD1yu","form-checkbox":"_styles-module__form-checkbox__3NosP","form-checkbox-dark":"_styles-module__form-checkbox-dark__3IIVU","form-radio":"_styles-module__form-radio__2uu7E","form-radio-dark":"_styles-module__form-radio-dark__2VXtv","popup-overlay":"_styles-module__popup-overlay__1oBGy","alert-container":"_styles-module__alert-container__2rI0b","body":"_styles-module__body__2mo3X","footer":"_styles-module__footer__24OKz","confirm-container":"_styles-module__confirm-container__3K3_g","modal-container":"_styles-module__modal-container__1DUXS","close-btn":"_styles-module__close-btn__3viwp","header":"_styles-module__header__1aDvk","default-modal-footer":"_styles-module__default-modal-footer__2R1Fn"};
 
 const Button = ({
   text,
@@ -14,7 +14,8 @@ const Button = ({
   size,
   width,
   shape,
-  Icon
+  Icon,
+  margin
 }) => {
   var buttonStyle = style.btn;
   var buttonColor = 'linear-gradient(105deg, #24B9E1 0%, #7166C4 100%)';
@@ -58,11 +59,11 @@ const Button = ({
   }
 
   if (size === 'm') {
-    buttonStyle += ' ' + style['medium-btn'];
+    buttonStyle += ' ' + style['medium-size'];
   } else if (size === 's') {
-    buttonStyle += ' ' + style['small-btn'];
+    buttonStyle += ' ' + style['small-size'];
   } else if (size === 'xs') {
-    buttonStyle += ' ' + style['xsmall-btn'];
+    buttonStyle += ' ' + style['xsmall-size'];
   }
 
   switch (buttonColor) {
@@ -95,13 +96,21 @@ const Button = ({
     buttonWidth = width;
   }
 
+  if (margin === undefined) {
+    margin = [0, 0, 20, 0];
+  }
+
   return /*#__PURE__*/React.createElement("button", {
     onClick: !buttonDisabled ? onClick : null,
     className: buttonStyle,
     disabled: disabled === true ? true : false,
     style: {
       backgroundColor: buttonColor,
-      width: buttonWidth
+      width: buttonWidth,
+      marginTop: margin[0],
+      marginRight: margin[1],
+      marginBottom: margin[2],
+      marginLeft: margin[3]
     }
   }, Icon ? /*#__PURE__*/React.createElement(Icon, null) : null, text);
 };
@@ -112,7 +121,8 @@ const ButtonCircle = ({
   extClass,
   size,
   color,
-  disabled
+  disabled,
+  margin
 }) => {
   var buttonStyle = '';
   var buttonColor = color;
@@ -143,51 +153,89 @@ const ButtonCircle = ({
     buttonStyle += ' ' + extClass;
   }
 
+  if (margin === undefined) {
+    margin = [0, 0, 20, 0];
+  }
+
   return /*#__PURE__*/React.createElement("div", {
     onClick: !buttonDisabled ? onClick : null,
     className: buttonStyle,
     style: {
       backgroundColor: buttonColor,
-      opacity: buttonOpacity
+      opacity: buttonOpacity,
+      marginTop: margin[0],
+      marginRight: margin[1],
+      marginBottom: margin[2],
+      marginLeft: margin[3]
     }
   }, /*#__PURE__*/React.createElement(Icon, null));
 };
 
 const Input = ({
   label,
+  type,
+  size,
   placeHolder,
   onChange,
   disabled,
   value,
   defaultValue,
   extClass,
-  theme
+  theme,
+  margin
 }) => {
   var inputPlaceHolder = '';
   var inputDisabled = false;
   var formStyle = style['label-input'];
   var inputStyle = '';
 
+  if (type === undefined) {
+    type = 'text';
+  }
+
   if (theme === 'dark') {
-    formStyle = style['label-input-dark'];
+    formStyle += ' ' + style['dark-mode'];
+    inputStyle += ' ' + style['dark-mode'];
   }
 
   if (extClass !== undefined) {
     formStyle += ' ' + extClass;
   }
 
-  if (disabled === true) {
-    inputDisabled = disabled;
-    inputStyle += ' ' + style['form-disabled'];
-  }
-
   if (placeHolder) {
     inputPlaceHolder = placeHolder;
   }
 
+  if (size !== undefined) {
+    if (size === 'm') {
+      inputStyle += ' ' + style['medium-size'];
+    } else if (size === 's') {
+      inputStyle += ' ' + style['small-size'];
+    } else if (size === 'xs') {
+      inputStyle += ' ' + style['xsmall-size'];
+    }
+  }
+
+  if (disabled === true) {
+    inputDisabled = disabled;
+    formStyle += ' ' + style['disabled'];
+    inputStyle += ' ' + style['form-disabled'];
+  }
+
+  if (margin === undefined) {
+    margin = [0, 0, 20, 0];
+  }
+
   return /*#__PURE__*/React.createElement("label", {
-    className: formStyle
+    className: formStyle,
+    style: {
+      marginTop: margin[0],
+      marginRight: margin[1],
+      marginBottom: margin[2],
+      marginLeft: margin[3]
+    }
   }, label, /*#__PURE__*/React.createElement("input", {
+    type: type,
     defaultValue: defaultValue ? defaultValue : null,
     value: value ? value : null,
     disabled: inputDisabled,
@@ -204,7 +252,8 @@ const CheckBox = ({
   checked,
   disabled,
   extClass,
-  theme
+  theme,
+  margin
 }) => {
   var formStyle = style['form-checkbox'];
   var formDisabled = false;
@@ -222,12 +271,27 @@ const CheckBox = ({
     formStyle += ' ' + extClass;
   }
 
+  if (margin === undefined) {
+    margin = [0, 0, 20, 0];
+  }
+
+  if (checked === undefined) {
+    checked = false;
+  }
+
   return /*#__PURE__*/React.createElement("label", {
+    style: {
+      marginTop: margin[0],
+      marginRight: margin[1],
+      marginBottom: margin[2],
+      marginLeft: margin[3]
+    },
     className: formStyle
   }, /*#__PURE__*/React.createElement("input", {
     disabled: formDisabled,
     onClick: onClick,
-    type: "checkbox"
+    type: "checkbox",
+    defaultChecked: checked
   }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, label), desc ? /*#__PURE__*/React.createElement("p", null, desc) : null));
 };
 
@@ -239,7 +303,8 @@ const Radio = ({
   checked,
   disabled,
   extClass,
-  theme
+  theme,
+  margin
 }) => {
   var formStyle = style['form-radio'];
   var formDisabled = false;
@@ -257,13 +322,28 @@ const Radio = ({
     formStyle += ' ' + extClass;
   }
 
+  if (margin === undefined) {
+    margin = [0, 0, 20, 0];
+  }
+
+  if (checked === undefined) {
+    checked = false;
+  }
+
   return /*#__PURE__*/React.createElement("label", {
+    style: {
+      marginTop: margin[0],
+      marginRight: margin[1],
+      marginBottom: margin[2],
+      marginLeft: margin[3]
+    },
     className: formStyle
   }, /*#__PURE__*/React.createElement("input", {
     disabled: formDisabled,
     onChange: onChange,
     type: "radio",
-    name: name
+    name: name,
+    defaultChecked: checked
   }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, label), desc ? /*#__PURE__*/React.createElement("p", null, desc) : null));
 };
 
@@ -302,7 +382,7 @@ const Alert = ({
         width: 20,
         height: 20
       }
-    }), /*#__PURE__*/React.createElement("p", null, label)), /*#__PURE__*/React.createElement("div", {
+    }), /*#__PURE__*/React.createElement("span", null, label)), /*#__PURE__*/React.createElement("div", {
       className: style['footer']
     }, /*#__PURE__*/React.createElement(Button, {
       size: "s",
@@ -360,7 +440,7 @@ const Confirm = ({
         width: 20,
         height: 20
       }
-    }), /*#__PURE__*/React.createElement("p", null, label)), /*#__PURE__*/React.createElement("div", {
+    }), /*#__PURE__*/React.createElement("span", null, label)), /*#__PURE__*/React.createElement("div", {
       className: style['footer']
     }, /*#__PURE__*/React.createElement(Button, {
       size: "s",
@@ -403,6 +483,14 @@ const Modal = ({
     width = 320;
   }
 
+  if (primaryButtonText === undefined) {
+    primaryButtonText = 'Yes';
+  }
+
+  if (secondaryButtonText === undefined) {
+    secondaryButtonText = 'No';
+  }
+
   if (visibility === true) {
     render = /*#__PURE__*/React.createElement("div", {
       className: style['popup-overlay'],
@@ -421,13 +509,14 @@ const Modal = ({
       }
     }, showHeader !== false ? /*#__PURE__*/React.createElement("div", {
       className: style['header']
-    }, HeaderComponent ? /*#__PURE__*/React.createElement(HeaderComponent, null) : null, headerLabel ? /*#__PURE__*/React.createElement("p", null, headerLabel) : null) : null, /*#__PURE__*/React.createElement("div", {
+    }, HeaderComponent ? /*#__PURE__*/React.createElement(HeaderComponent, null) : null, headerLabel ? /*#__PURE__*/React.createElement("span", null, headerLabel) : null) : null, /*#__PURE__*/React.createElement("div", {
       className: style['body']
-    }, BodyComponent ? /*#__PURE__*/React.createElement(BodyComponent, null) : null, bodyLabel ? /*#__PURE__*/React.createElement("p", null, bodyLabel) : null), showFooter !== false ? /*#__PURE__*/React.createElement("div", {
+    }, BodyComponent ? /*#__PURE__*/React.createElement(BodyComponent, null) : null, bodyLabel ? /*#__PURE__*/React.createElement("span", null, bodyLabel) : null), showFooter !== false ? /*#__PURE__*/React.createElement("div", {
       className: style['footer']
     }, FooterComponent ? /*#__PURE__*/React.createElement(FooterComponent, null) : /*#__PURE__*/React.createElement("div", {
       className: style['default-modal-footer']
     }, /*#__PURE__*/React.createElement(Button, {
+      margin: [0, 10, 0, 0],
       size: "s",
       text: primaryButtonText,
       onClick: primaryButtonAction

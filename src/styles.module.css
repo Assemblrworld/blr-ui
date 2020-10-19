@@ -1,5 +1,32 @@
 .disabled {
-  opacity: 0.4;
+  opacity: 0.4 !important;
+  color: rgba(0,0,0,0.75) !important;
+}
+
+.medium-size {
+  max-height: 36px !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  font-size: 14px !important;
+} 
+
+.small-size {
+  max-height: 30px !important;
+  height: 30px !important;
+  min-height: 30px !important;
+  font-size: 14px !important;
+} 
+
+.xsmall-size {
+  max-height: 24px !important;
+  height: 24px !important;
+  min-height: 24px !important;
+  font-size: 12px !important;
+} 
+
+.dark-mode {
+  color: white !important;
+  background-color: rgba(0,0,0,0) !important;
 }
 
 button {
@@ -19,10 +46,15 @@ button {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
   border-radius: 24px;
 
   
+}
+
+.btn > :nth-child(1) {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }
 
 .btn:hover, .btn-circle:hover, .btn-circle-custom:hover, .btn:focus, .btn-circle:focus, .btn-circle-custom:focus{
@@ -52,13 +84,6 @@ button {
   max-width: 48px;
 }
 
-.medium-btn {
-  height: 36px;
-  min-height: 36px;
-  max-height: 36px;
-  font-size: 14px;
-}
-
 .medium-circle-btn {
   height: 36px;
   min-height: 36px;
@@ -66,13 +91,6 @@ button {
   width: 36px;
   min-width: 36px;
   max-width: 36px;
-}
-
-.small-btn {
-  height: 30px;
-  min-height: 30px;
-  max-height: 30px;
-  font-size: 14px;
 }
 
 .small-circle-btn {
@@ -98,27 +116,6 @@ button {
   width: 24px;
   min-width: 24px;
   max-width: 24px;
-}
-
-.medium-btn {
-  height: 36px;
-  min-height: 36px;
-  max-height: 36px;
-  font-size: 14px;
-}
-
-.small-btn {
-  height: 30px;
-  min-height: 30px;
-  max-height: 30px;
-  font-size: 14px;
-}
-
-.xsmall-btn {
-  height: 24px;
-  min-height: 24px;
-  max-height: 24px;
-  font-size: 12px;
 }
 
 .primary-btn {
@@ -151,11 +148,7 @@ button {
   background:#F7BE2D;
 }
 
-.color-btn > :nth-child(1) {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-}
+
 
 
 .btn-circle {
@@ -163,7 +156,6 @@ button {
   border-radius: 50%;
   opacity: 1;
   cursor: pointer;
-  margin-bottom: 20px;
 }
 
 .btn-circle-custom {
@@ -199,7 +191,6 @@ button {
   font-size: 14px;
   font-weight: bold;
   width: calc(100%);
-  margin-bottom: 20px;
 }
 
 .label-input > :nth-child(1){
@@ -218,9 +209,13 @@ button {
   outline: none;
 }
 
+.label-input > :nth-child(1)::placeholder{
+  font-style: italic;
+}
+
 .label-input > :nth-child(1):focus{
-  border-color: #91DCF0;
-  background:  white 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 0 3px rgba(4,157,212,.3);
+  outline: none;
 }
 
 /* FORM INPUT DARK MODE */
@@ -235,12 +230,15 @@ button {
   font-size: 14px;
   font-weight: bold;
   width: calc(100%);
-  margin-bottom: 20px;
+}
+
+.label-input-dark > :nth-child(1)::placeholder{
+  font-style: italic;
 }
 
 .label-input-dark > :nth-child(1):focus{
-  border-color: #91DCF0;
-  background:  #020726 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 0 3px rgba(4,157,212,.3);
+  outline: none;
 }
 
 .label-input-dark > :nth-child(1){
@@ -275,7 +273,6 @@ button {
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-bottom: 20px;
   box-sizing: border-box;
   cursor: pointer;
   -webkit-touch-callout: none; /* iOS Safari */
@@ -354,7 +351,6 @@ button {
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-bottom: 20px;
   box-sizing: border-box;
   cursor: pointer;
   -webkit-touch-callout: none; /* iOS Safari */
@@ -430,7 +426,6 @@ button {
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-bottom: 20px;
   box-sizing: border-box;
   cursor: pointer;
   
@@ -505,7 +500,6 @@ button {
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-bottom: 20px;
   box-sizing: border-box;
   cursor: pointer;
   
@@ -606,6 +600,10 @@ button {
 }
 
 .alert-container > .body {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
   color: #001741;
   font-size: 16px;
@@ -663,6 +661,10 @@ button {
 }
 
 .confirm-container > .body {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
   color: #001741;
   font-size: 16px;
