@@ -736,9 +736,6 @@ button {
 
 ._styles-module__modal-container__1DUXS {
   min-height: 100px;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 5px 15px #00000033;
   border-radius: 8px;
@@ -748,6 +745,8 @@ button {
   align-items: center;
   padding: 0;
   position: relative;
+  transition: height 0.3s;
+  max-width: 100%;
 }
 
 ._styles-module__modal-container__1DUXS > ._styles-module__close-btn__3viwp {
@@ -820,6 +819,10 @@ button {
   ._styles-module__confirm-container__3K3_g {
     width: 100%;
     max-width: 100%;
+    border-radius: 0;
+  }
+
+  ._styles-module__modal-container__1DUXS {
     border-radius: 0;
   }
 }

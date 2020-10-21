@@ -708,7 +708,6 @@ button {
 
 .modal-container {
   min-height: 100px;
-  height: max-content;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 5px 15px #00000033;
   border-radius: 8px;
@@ -718,6 +717,8 @@ button {
   align-items: center;
   padding: 0;
   position: relative;
+  transition: height 0.3s;
+  max-width: 100%;
 }
 
 .modal-container > .close-btn {
@@ -788,6 +789,10 @@ button {
   .confirm-container {
     width: 100%;
     max-width: 100%;
+    border-radius: 0;
+  }
+
+  .modal-container {
     border-radius: 0;
   }
 }

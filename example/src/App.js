@@ -11,7 +11,7 @@ const Component = ({style,theme, context}) => {
   var exampleString = ''
   var exampleHeaderStyle = 'example-header'
   var exampleStyle = 'example'
-  const {alertVisibility, confirmVisibility, modalVisibility, modal1Visibility, modal2Visibility} = context.state
+  const {alertVisibility, confirmVisibility, modalVisibility, modal1Visibility, modal2Visibility, modal3Visibility} = context.state
   
 
   if(theme === 'dark'){
@@ -68,6 +68,15 @@ const Component = ({style,theme, context}) => {
           onClick={()=>context.setState({modal2Visibility:!modal2Visibility})} 
           styles='primary'
           text='Show Modal with custom component'
+          extClass='btn'
+        />
+
+        {/* SHOW MODAL POPUP */}
+        <Button 
+          width='100%'
+          onClick={()=>context.setState({modal3Visibility:!modal3Visibility})} 
+          styles='primary'
+          text='Show Modal with accordion component'
           extClass='btn'
         />
 
@@ -487,11 +496,13 @@ class App extends React.Component {
       modalVisibility:false,
       modal1Visibility:false,
       modal2Visibility:false,
+      modal3Visibility:false,
+      activeMenu:-1
     }
   }
 
   render(){
-    const {alertVisibility, confirmVisibility, modalVisibility, modal1Visibility, modal2Visibility} = this.state
+    const {alertVisibility, confirmVisibility, modalVisibility, modal1Visibility, modal2Visibility, modal3Visibility,activeMenu} = this.state
     const context = this
     return (
       <div className='parent'>
@@ -573,6 +584,79 @@ class App extends React.Component {
           hideModal={()=>context.setState({modal2Visibility:false})}
           primaryButtonAction={()=>context.setState({modal2Visibility:false})}
           secondaryButtonAction={()=>context.setState({modal2Visibility:false})}
+          modalAction={()=>console.log('modal action')}
+        />
+
+
+        {/* ACORDION MODAL */}
+        <Modal
+          width={400}
+          visibility={modal3Visibility}
+          context={context}
+          HeaderComponent={()=>(
+            <div>
+              THIS IS CUSTOM HEADER
+            </div>
+          )}
+
+          BodyComponent={()=>(
+            <div 
+
+              className='acc-component'>
+              <div 
+                onClick={()=>{
+                  if(activeMenu===0){
+                    context.setState({
+                      activeMenu:-1
+                    })
+                  } else {
+                    context.setState({
+                      activeMenu:0
+                    })
+                    
+                  }
+                  
+                }}
+                className={activeMenu===0?'active':''}>KOMPONEN 1</div>
+              <div
+                onClick={()=>{
+                  if(activeMenu===1){
+                    context.setState({
+                      activeMenu:-1
+                    })
+                  } else {
+                    context.setState({
+                      activeMenu:1
+                    })
+                  }
+                }}
+                className={activeMenu===1?'active':''}
+              >KOMPONEN 2</div>
+              <div
+                onClick={()=>{
+                  if(activeMenu===2){
+                    context.setState({
+                      activeMenu:-1
+                    })
+                  } else {
+                    context.setState({
+                      activeMenu:2
+                    })
+                  }
+                }}
+                className={activeMenu===2?'active':''}
+              >KOMPONEN 3</div>
+            </div>
+          )}
+
+          FooterComponent={()=>(
+            <div>
+              THIS IS CUSTOM FOOTER
+            </div>
+          )}
+          hideModal={()=>context.setState({modal3Visibility:false})}
+          primaryButtonAction={()=>context.setState({modal3Visibility:false})}
+          secondaryButtonAction={()=>context.setState({modal3Visibility:false})}
           modalAction={()=>console.log('modal action')}
         />
 

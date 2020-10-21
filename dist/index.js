@@ -506,6 +506,7 @@ var Modal = function Modal(_ref8) {
     }, showHeader !== false ? /*#__PURE__*/React.createElement("div", {
       className: style['header']
     }, HeaderComponent ? /*#__PURE__*/React.createElement(HeaderComponent, null) : null, headerLabel ? /*#__PURE__*/React.createElement("span", null, headerLabel) : null) : null, /*#__PURE__*/React.createElement("div", {
+      id: "modal-body",
       className: style['body']
     }, BodyComponent ? /*#__PURE__*/React.createElement(BodyComponent, null) : null, bodyLabel ? /*#__PURE__*/React.createElement("span", null, bodyLabel) : null), showFooter !== false ? /*#__PURE__*/React.createElement("div", {
       className: style['footer']

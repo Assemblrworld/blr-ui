@@ -408,7 +408,7 @@ const Modal = ({visibility, width, headerLabel, bodyLabel, HeaderComponent, Body
               </div>
             ):null}
 
-            <div className={style['body']}>
+            <div id='modal-body' className={style['body']}>
               {BodyComponent?(<BodyComponent/>):null}
               {bodyLabel?<span>{bodyLabel}</span>:null}
             </div>
