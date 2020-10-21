@@ -208,6 +208,74 @@ const Input = ({label, type, size, placeHolder, onChange, onClick, disabled, val
   )
 }
 
+const InputArea = ({label, type, size, placeHolder, onChange, onClick, disabled, value, defaultValue, extClass, theme, margin}) => {
+  var inputPlaceHolder = ''
+  var inputDisabled = false
+  var formStyle = style['label-input'] + ' ' + style['input-area'] 
+  var inputStyle = ''
+
+  if(type===undefined){
+    type = 'text'
+  }
+  
+  if(theme === 'dark'){
+    //formStyle = style['label-input-dark']
+    formStyle += ' '+style['dark-mode']
+    inputStyle += ' '+style['dark-mode']
+    //inputStyle = style['input-dark'] 
+  }
+  
+  if(extClass !== undefined){
+    formStyle += ' '+extClass
+  }
+
+  
+
+  if(placeHolder){
+    inputPlaceHolder = placeHolder
+  }
+
+  if(size !== undefined){
+    if(size === 'm'){
+      inputStyle += ' '+style['medium-size']
+    } else if( size === 's'){
+      inputStyle += ' '+style['small-size']
+    } else if( size === 'xs'){
+      inputStyle += ' '+style['xsmall-size']
+    }
+  }
+
+  if(disabled === true){
+    inputDisabled = disabled
+    formStyle += ' '+style['disabled']
+    inputStyle += ' '+style['form-disabled']
+  }
+
+  if(margin===undefined){
+    margin=[0,0,20,0]
+  }
+
+  return (
+    <label 
+      className={formStyle}
+      style={{marginTop:margin[0],marginRight:margin[1],marginBottom:margin[2],marginLeft:margin[3]}}
+      >
+      {label}
+      <textarea
+        type={type}
+        onClick={onClick}
+        defaultValue={defaultValue?defaultValue:null}
+        value={value?value:null}
+        disabled={inputDisabled}
+        onChange={onChange}
+        placeholder={inputPlaceHolder}
+        className={inputStyle}
+      />
+    </label>
+    
+  )
+}
+
 const CheckBox = ({label, desc , onClick, checked, disabled, extClass, theme, margin}) => {
   var formStyle = style['form-checkbox']
   var formDisabled = false 
@@ -461,5 +529,6 @@ export {
   Radio,
   Alert,
   Confirm,
-  Modal
+  Modal,
+  InputArea
 }

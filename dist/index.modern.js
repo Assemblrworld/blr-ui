@@ -2,7 +2,7 @@ import React from 'react';
 import { FiAlertTriangle } from 'react-icons/fi';
 import { AiFillCloseCircle } from 'react-icons/ai';
 
-var style = {"disabled":"_styles-module__disabled__2RWmX","medium-size":"_styles-module__medium-size__2LpS7","small-size":"_styles-module__small-size__1Dccc","xsmall-size":"_styles-module__xsmall-size__2HSWc","dark-mode":"_styles-module__dark-mode__3yj9P","btn":"_styles-module__btn__1Pz2d","btn-circle":"_styles-module__btn-circle__ZMOEZ","btn-circle-custom":"_styles-module__btn-circle-custom__38f37","square-btn":"_styles-module__square-btn__1HEK_","default-circle-btn":"_styles-module__default-circle-btn__39XKQ","medium-circle-btn":"_styles-module__medium-circle-btn__2qA6O","small-circle-btn":"_styles-module__small-circle-btn__38yRp","xsmall-btn":"_styles-module__xsmall-btn__1F4aM","xsmall-circle-btn":"_styles-module__xsmall-circle-btn__1P2U1","primary-btn":"_styles-module__primary-btn__39bnp","secondary-btn":"_styles-module__secondary-btn__21664","disabled-btn":"_styles-module__disabled-btn__1hoGZ","transparent-btn":"_styles-module__transparent-btn__oBYU2","white-btn":"_styles-module__white-btn__DvBYY","color-btn":"_styles-module__color-btn__MHNEW","label-input":"_styles-module__label-input__32_3E","label-input-dark":"_styles-module__label-input-dark__2ZEov","form-disabled":"_styles-module__form-disabled__cD1yu","form-checkbox":"_styles-module__form-checkbox__3NosP","form-checkbox-dark":"_styles-module__form-checkbox-dark__3IIVU","form-radio":"_styles-module__form-radio__2uu7E","form-radio-dark":"_styles-module__form-radio-dark__2VXtv","popup-overlay":"_styles-module__popup-overlay__1oBGy","alert-container":"_styles-module__alert-container__2rI0b","body":"_styles-module__body__2mo3X","footer":"_styles-module__footer__24OKz","confirm-container":"_styles-module__confirm-container__3K3_g","modal-container":"_styles-module__modal-container__1DUXS","close-btn":"_styles-module__close-btn__3viwp","header":"_styles-module__header__1aDvk","default-modal-footer":"_styles-module__default-modal-footer__2R1Fn"};
+var style = {"disabled":"_styles-module__disabled__2RWmX","medium-size":"_styles-module__medium-size__2LpS7","small-size":"_styles-module__small-size__1Dccc","xsmall-size":"_styles-module__xsmall-size__2HSWc","dark-mode":"_styles-module__dark-mode__3yj9P","btn":"_styles-module__btn__1Pz2d","btn-circle":"_styles-module__btn-circle__ZMOEZ","btn-circle-custom":"_styles-module__btn-circle-custom__38f37","square-btn":"_styles-module__square-btn__1HEK_","default-circle-btn":"_styles-module__default-circle-btn__39XKQ","medium-circle-btn":"_styles-module__medium-circle-btn__2qA6O","small-circle-btn":"_styles-module__small-circle-btn__38yRp","xsmall-btn":"_styles-module__xsmall-btn__1F4aM","xsmall-circle-btn":"_styles-module__xsmall-circle-btn__1P2U1","primary-btn":"_styles-module__primary-btn__39bnp","secondary-btn":"_styles-module__secondary-btn__21664","disabled-btn":"_styles-module__disabled-btn__1hoGZ","transparent-btn":"_styles-module__transparent-btn__oBYU2","white-btn":"_styles-module__white-btn__DvBYY","color-btn":"_styles-module__color-btn__MHNEW","label-input":"_styles-module__label-input__32_3E","label-input-dark":"_styles-module__label-input-dark__2ZEov","form-disabled":"_styles-module__form-disabled__cD1yu","input-area":"_styles-module__input-area__34vFI","form-checkbox":"_styles-module__form-checkbox__3NosP","form-checkbox-dark":"_styles-module__form-checkbox-dark__3IIVU","form-radio":"_styles-module__form-radio__2uu7E","form-radio-dark":"_styles-module__form-radio-dark__2VXtv","popup-overlay":"_styles-module__popup-overlay__1oBGy","alert-container":"_styles-module__alert-container__2rI0b","body":"_styles-module__body__2mo3X","footer":"_styles-module__footer__24OKz","confirm-container":"_styles-module__confirm-container__3K3_g","modal-container":"_styles-module__modal-container__1DUXS","close-btn":"_styles-module__close-btn__3viwp","header":"_styles-module__header__1aDvk","default-modal-footer":"_styles-module__default-modal-footer__2R1Fn"};
 
 const Button = ({
   text,
@@ -236,6 +236,82 @@ const Input = ({
       marginLeft: margin[3]
     }
   }, label, /*#__PURE__*/React.createElement("input", {
+    type: type,
+    onClick: onClick,
+    defaultValue: defaultValue ? defaultValue : null,
+    value: value ? value : null,
+    disabled: inputDisabled,
+    onChange: onChange,
+    placeholder: inputPlaceHolder,
+    className: inputStyle
+  }));
+};
+
+const InputArea = ({
+  label,
+  type,
+  size,
+  placeHolder,
+  onChange,
+  onClick,
+  disabled,
+  value,
+  defaultValue,
+  extClass,
+  theme,
+  margin
+}) => {
+  var inputPlaceHolder = '';
+  var inputDisabled = false;
+  var formStyle = style['label-input'] + ' ' + style['input-area'];
+  var inputStyle = '';
+
+  if (type === undefined) {
+    type = 'text';
+  }
+
+  if (theme === 'dark') {
+    formStyle += ' ' + style['dark-mode'];
+    inputStyle += ' ' + style['dark-mode'];
+  }
+
+  if (extClass !== undefined) {
+    formStyle += ' ' + extClass;
+  }
+
+  if (placeHolder) {
+    inputPlaceHolder = placeHolder;
+  }
+
+  if (size !== undefined) {
+    if (size === 'm') {
+      inputStyle += ' ' + style['medium-size'];
+    } else if (size === 's') {
+      inputStyle += ' ' + style['small-size'];
+    } else if (size === 'xs') {
+      inputStyle += ' ' + style['xsmall-size'];
+    }
+  }
+
+  if (disabled === true) {
+    inputDisabled = disabled;
+    formStyle += ' ' + style['disabled'];
+    inputStyle += ' ' + style['form-disabled'];
+  }
+
+  if (margin === undefined) {
+    margin = [0, 0, 20, 0];
+  }
+
+  return /*#__PURE__*/React.createElement("label", {
+    className: formStyle,
+    style: {
+      marginTop: margin[0],
+      marginRight: margin[1],
+      marginBottom: margin[2],
+      marginLeft: margin[3]
+    }
+  }, label, /*#__PURE__*/React.createElement("textarea", {
     type: type,
     onClick: onClick,
     defaultValue: defaultValue ? defaultValue : null,
@@ -540,5 +616,5 @@ const Modal = ({
   return render;
 };
 
-export { Alert, Button, ButtonCircle, CheckBox, Confirm, Input, Modal, Radio };
+export { Alert, Button, ButtonCircle, CheckBox, Confirm, Input, InputArea, Modal, Radio };
 //# sourceMappingURL=index.modern.js.map

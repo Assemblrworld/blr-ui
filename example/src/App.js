@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button, ButtonCircle, Input, CheckBox, Radio, Alert, Confirm, Modal  }  from 'blr-ui'
+import { Button, ButtonCircle, Input, CheckBox, Radio, Alert, Confirm, Modal, InputArea   }  from 'blr-ui'
 import 'blr-ui/dist/index.css'
 import {AiOutlineFacebook} from 'react-icons/ai'
 import {BsArrowLeft} from 'react-icons/bs'
@@ -321,6 +321,14 @@ const Component = ({style,theme, context}) => {
 </div>
 
         <Input
+          theme={theme==='dark'?'dark':null}
+          label='Default Form'
+          placeHolder='Insert Name'
+          onChange={(e)=>console.log(e.target.value)}
+          onClick={()=>console.log('formnya diklik')}
+        />
+
+        <InputArea
           theme={theme==='dark'?'dark':null}
           label='Default Form'
           placeHolder='Insert Name'

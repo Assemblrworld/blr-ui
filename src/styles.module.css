@@ -262,6 +262,19 @@ button {
   background: rgba(2, 7, 38, 0.05) 0% 0% no-repeat padding-box !important;
 }
 
+
+/* FORM TEXTAREA */
+/* FORM TEXTAREA */
+/* FORM TEXTAREA */
+/* FORM TEXTAREA */
+
+.input-area textarea {
+  min-height: 80px !important;
+  padding: 10px !important;
+
+}
+
+
 /* FORM CHECKBOX LIGHT MODE */
 /* FORM CHECKBOX LIGHT MODE */
 /* FORM CHECKBOX LIGHT MODE */

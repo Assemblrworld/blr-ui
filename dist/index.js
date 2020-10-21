@@ -4,7 +4,7 @@ var React = _interopDefault(require('react'));
 var fi = require('react-icons/fi');
 var ai = require('react-icons/ai');
 
-var style = {"disabled":"_styles-module__disabled__2RWmX","medium-size":"_styles-module__medium-size__2LpS7","small-size":"_styles-module__small-size__1Dccc","xsmall-size":"_styles-module__xsmall-size__2HSWc","dark-mode":"_styles-module__dark-mode__3yj9P","btn":"_styles-module__btn__1Pz2d","btn-circle":"_styles-module__btn-circle__ZMOEZ","btn-circle-custom":"_styles-module__btn-circle-custom__38f37","square-btn":"_styles-module__square-btn__1HEK_","default-circle-btn":"_styles-module__default-circle-btn__39XKQ","medium-circle-btn":"_styles-module__medium-circle-btn__2qA6O","small-circle-btn":"_styles-module__small-circle-btn__38yRp","xsmall-btn":"_styles-module__xsmall-btn__1F4aM","xsmall-circle-btn":"_styles-module__xsmall-circle-btn__1P2U1","primary-btn":"_styles-module__primary-btn__39bnp","secondary-btn":"_styles-module__secondary-btn__21664","disabled-btn":"_styles-module__disabled-btn__1hoGZ","transparent-btn":"_styles-module__transparent-btn__oBYU2","white-btn":"_styles-module__white-btn__DvBYY","color-btn":"_styles-module__color-btn__MHNEW","label-input":"_styles-module__label-input__32_3E","label-input-dark":"_styles-module__label-input-dark__2ZEov","form-disabled":"_styles-module__form-disabled__cD1yu","form-checkbox":"_styles-module__form-checkbox__3NosP","form-checkbox-dark":"_styles-module__form-checkbox-dark__3IIVU","form-radio":"_styles-module__form-radio__2uu7E","form-radio-dark":"_styles-module__form-radio-dark__2VXtv","popup-overlay":"_styles-module__popup-overlay__1oBGy","alert-container":"_styles-module__alert-container__2rI0b","body":"_styles-module__body__2mo3X","footer":"_styles-module__footer__24OKz","confirm-container":"_styles-module__confirm-container__3K3_g","modal-container":"_styles-module__modal-container__1DUXS","close-btn":"_styles-module__close-btn__3viwp","header":"_styles-module__header__1aDvk","default-modal-footer":"_styles-module__default-modal-footer__2R1Fn"};
+var style = {"disabled":"_styles-module__disabled__2RWmX","medium-size":"_styles-module__medium-size__2LpS7","small-size":"_styles-module__small-size__1Dccc","xsmall-size":"_styles-module__xsmall-size__2HSWc","dark-mode":"_styles-module__dark-mode__3yj9P","btn":"_styles-module__btn__1Pz2d","btn-circle":"_styles-module__btn-circle__ZMOEZ","btn-circle-custom":"_styles-module__btn-circle-custom__38f37","square-btn":"_styles-module__square-btn__1HEK_","default-circle-btn":"_styles-module__default-circle-btn__39XKQ","medium-circle-btn":"_styles-module__medium-circle-btn__2qA6O","small-circle-btn":"_styles-module__small-circle-btn__38yRp","xsmall-btn":"_styles-module__xsmall-btn__1F4aM","xsmall-circle-btn":"_styles-module__xsmall-circle-btn__1P2U1","primary-btn":"_styles-module__primary-btn__39bnp","secondary-btn":"_styles-module__secondary-btn__21664","disabled-btn":"_styles-module__disabled-btn__1hoGZ","transparent-btn":"_styles-module__transparent-btn__oBYU2","white-btn":"_styles-module__white-btn__DvBYY","color-btn":"_styles-module__color-btn__MHNEW","label-input":"_styles-module__label-input__32_3E","label-input-dark":"_styles-module__label-input-dark__2ZEov","form-disabled":"_styles-module__form-disabled__cD1yu","input-area":"_styles-module__input-area__34vFI","form-checkbox":"_styles-module__form-checkbox__3NosP","form-checkbox-dark":"_styles-module__form-checkbox-dark__3IIVU","form-radio":"_styles-module__form-radio__2uu7E","form-radio-dark":"_styles-module__form-radio-dark__2VXtv","popup-overlay":"_styles-module__popup-overlay__1oBGy","alert-container":"_styles-module__alert-container__2rI0b","body":"_styles-module__body__2mo3X","footer":"_styles-module__footer__24OKz","confirm-container":"_styles-module__confirm-container__3K3_g","modal-container":"_styles-module__modal-container__1DUXS","close-btn":"_styles-module__close-btn__3viwp","header":"_styles-module__header__1aDvk","default-modal-footer":"_styles-module__default-modal-footer__2R1Fn"};
 
 var Button = function Button(_ref) {
   var text = _ref.text,
@@ -246,15 +246,90 @@ var Input = function Input(_ref3) {
   }));
 };
 
-var CheckBox = function CheckBox(_ref4) {
+var InputArea = function InputArea(_ref4) {
   var label = _ref4.label,
-      desc = _ref4.desc,
+      type = _ref4.type,
+      size = _ref4.size,
+      placeHolder = _ref4.placeHolder,
+      onChange = _ref4.onChange,
       onClick = _ref4.onClick,
-      checked = _ref4.checked,
       disabled = _ref4.disabled,
+      value = _ref4.value,
+      defaultValue = _ref4.defaultValue,
       extClass = _ref4.extClass,
       theme = _ref4.theme,
       margin = _ref4.margin;
+  var inputPlaceHolder = '';
+  var inputDisabled = false;
+  var formStyle = style['label-input'] + ' ' + style['input-area'];
+  var inputStyle = '';
+
+  if (type === undefined) {
+    type = 'text';
+  }
+
+  if (theme === 'dark') {
+    formStyle += ' ' + style['dark-mode'];
+    inputStyle += ' ' + style['dark-mode'];
+  }
+
+  if (extClass !== undefined) {
+    formStyle += ' ' + extClass;
+  }
+
+  if (placeHolder) {
+    inputPlaceHolder = placeHolder;
+  }
+
+  if (size !== undefined) {
+    if (size === 'm') {
+      inputStyle += ' ' + style['medium-size'];
+    } else if (size === 's') {
+      inputStyle += ' ' + style['small-size'];
+    } else if (size === 'xs') {
+      inputStyle += ' ' + style['xsmall-size'];
+    }
+  }
+
+  if (disabled === true) {
+    inputDisabled = disabled;
+    formStyle += ' ' + style['disabled'];
+    inputStyle += ' ' + style['form-disabled'];
+  }
+
+  if (margin === undefined) {
+    margin = [0, 0, 20, 0];
+  }
+
+  return /*#__PURE__*/React.createElement("label", {
+    className: formStyle,
+    style: {
+      marginTop: margin[0],
+      marginRight: margin[1],
+      marginBottom: margin[2],
+      marginLeft: margin[3]
+    }
+  }, label, /*#__PURE__*/React.createElement("textarea", {
+    type: type,
+    onClick: onClick,
+    defaultValue: defaultValue ? defaultValue : null,
+    value: value ? value : null,
+    disabled: inputDisabled,
+    onChange: onChange,
+    placeholder: inputPlaceHolder,
+    className: inputStyle
+  }));
+};
+
+var CheckBox = function CheckBox(_ref5) {
+  var label = _ref5.label,
+      desc = _ref5.desc,
+      onClick = _ref5.onClick,
+      checked = _ref5.checked,
+      disabled = _ref5.disabled,
+      extClass = _ref5.extClass,
+      theme = _ref5.theme,
+      margin = _ref5.margin;
   var formStyle = style['form-checkbox'];
   var formDisabled = false;
 
@@ -295,16 +370,16 @@ var CheckBox = function CheckBox(_ref4) {
   }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, label), desc ? /*#__PURE__*/React.createElement("p", null, desc) : null));
 };
 
-var Radio = function Radio(_ref5) {
-  var label = _ref5.label,
-      desc = _ref5.desc,
-      onChange = _ref5.onChange,
-      name = _ref5.name,
-      checked = _ref5.checked,
-      disabled = _ref5.disabled,
-      extClass = _ref5.extClass,
-      theme = _ref5.theme,
-      margin = _ref5.margin;
+var Radio = function Radio(_ref6) {
+  var label = _ref6.label,
+      desc = _ref6.desc,
+      onChange = _ref6.onChange,
+      name = _ref6.name,
+      checked = _ref6.checked,
+      disabled = _ref6.disabled,
+      extClass = _ref6.extClass,
+      theme = _ref6.theme,
+      margin = _ref6.margin;
   var formStyle = style['form-radio'];
   var formDisabled = false;
 
@@ -346,12 +421,12 @@ var Radio = function Radio(_ref5) {
   }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, label), desc ? /*#__PURE__*/React.createElement("p", null, desc) : null));
 };
 
-var Alert = function Alert(_ref6) {
-  var visibility = _ref6.visibility,
-      hideAlert = _ref6.hideAlert,
-      label = _ref6.label,
-      buttonText = _ref6.buttonText,
-      Icon = _ref6.Icon;
+var Alert = function Alert(_ref7) {
+  var visibility = _ref7.visibility,
+      hideAlert = _ref7.hideAlert,
+      label = _ref7.label,
+      buttonText = _ref7.buttonText,
+      Icon = _ref7.Icon;
   var render = null;
 
   if (buttonText === undefined) {
@@ -391,14 +466,14 @@ var Alert = function Alert(_ref6) {
   return render;
 };
 
-var Confirm = function Confirm(_ref7) {
-  var visibility = _ref7.visibility,
-      confirmAction = _ref7.confirmAction,
-      label = _ref7.label,
-      primaryButtonText = _ref7.primaryButtonText,
-      secondaryButtonText = _ref7.secondaryButtonText,
-      primaryButtonStyle = _ref7.primaryButtonStyle,
-      Icon = _ref7.Icon;
+var Confirm = function Confirm(_ref8) {
+  var visibility = _ref8.visibility,
+      confirmAction = _ref8.confirmAction,
+      label = _ref8.label,
+      primaryButtonText = _ref8.primaryButtonText,
+      secondaryButtonText = _ref8.secondaryButtonText,
+      primaryButtonStyle = _ref8.primaryButtonStyle,
+      Icon = _ref8.Icon;
   var render = null;
   var button1Style = 'primary';
 
@@ -459,22 +534,22 @@ var Confirm = function Confirm(_ref7) {
   return render;
 };
 
-var Modal = function Modal(_ref8) {
-  var visibility = _ref8.visibility,
-      width = _ref8.width,
-      headerLabel = _ref8.headerLabel,
-      bodyLabel = _ref8.bodyLabel,
-      HeaderComponent = _ref8.HeaderComponent,
-      BodyComponent = _ref8.BodyComponent,
-      FooterComponent = _ref8.FooterComponent,
-      hideModal = _ref8.hideModal,
-      closeButton = _ref8.closeButton,
-      showHeader = _ref8.showHeader,
-      showFooter = _ref8.showFooter,
-      primaryButtonAction = _ref8.primaryButtonAction,
-      primaryButtonText = _ref8.primaryButtonText,
-      secondaryButtonAction = _ref8.secondaryButtonAction,
-      secondaryButtonText = _ref8.secondaryButtonText;
+var Modal = function Modal(_ref9) {
+  var visibility = _ref9.visibility,
+      width = _ref9.width,
+      headerLabel = _ref9.headerLabel,
+      bodyLabel = _ref9.bodyLabel,
+      HeaderComponent = _ref9.HeaderComponent,
+      BodyComponent = _ref9.BodyComponent,
+      FooterComponent = _ref9.FooterComponent,
+      hideModal = _ref9.hideModal,
+      closeButton = _ref9.closeButton,
+      showHeader = _ref9.showHeader,
+      showFooter = _ref9.showFooter,
+      primaryButtonAction = _ref9.primaryButtonAction,
+      primaryButtonText = _ref9.primaryButtonText,
+      secondaryButtonAction = _ref9.secondaryButtonAction,
+      secondaryButtonText = _ref9.secondaryButtonText;
   var render = null;
 
   if (width === undefined) {
@@ -542,6 +617,7 @@ exports.ButtonCircle = ButtonCircle;
 exports.CheckBox = CheckBox;
 exports.Confirm = Confirm;
 exports.Input = Input;
+exports.InputArea = InputArea;
 exports.Modal = Modal;
 exports.Radio = Radio;
 //# sourceMappingURL=index.js.map
