@@ -177,7 +177,7 @@ const Input = ({
   size,
   placeHolder,
   onChange,
-  onFocus,
+  onClick,
   disabled,
   value,
   defaultValue,
@@ -237,13 +237,13 @@ const Input = ({
     }
   }, label, /*#__PURE__*/React.createElement("input", {
     type: type,
+    onClick: onClick,
     defaultValue: defaultValue ? defaultValue : null,
     value: value ? value : null,
     disabled: inputDisabled,
     onChange: onChange,
     placeholder: inputPlaceHolder,
-    className: inputStyle,
-    onFocus: onFocus
+    className: inputStyle
   }));
 };
 

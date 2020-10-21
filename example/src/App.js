@@ -325,6 +325,7 @@ const Component = ({style,theme, context}) => {
           label='Default Form'
           placeHolder='Insert Name'
           onChange={(e)=>console.log(e.target.value)}
+          onClick={()=>console.log('formnya diklik')}
         />
 
         <Input
