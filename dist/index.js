@@ -177,6 +177,7 @@ var Input = function Input(_ref3) {
       size = _ref3.size,
       placeHolder = _ref3.placeHolder,
       onChange = _ref3.onChange,
+      onFocus = _ref3.onFocus,
       disabled = _ref3.disabled,
       value = _ref3.value,
       defaultValue = _ref3.defaultValue,
@@ -240,7 +241,8 @@ var Input = function Input(_ref3) {
     disabled: inputDisabled,
     onChange: onChange,
     placeholder: inputPlaceHolder,
-    className: inputStyle
+    className: inputStyle,
+    onFocus: onFocus
   }));
 };
 

@@ -177,6 +177,7 @@ const Input = ({
   size,
   placeHolder,
   onChange,
+  onFocus,
   disabled,
   value,
   defaultValue,
@@ -241,7 +242,8 @@ const Input = ({
     disabled: inputDisabled,
     onChange: onChange,
     placeholder: inputPlaceHolder,
-    className: inputStyle
+    className: inputStyle,
+    onFocus: onFocus
   }));
 };
 

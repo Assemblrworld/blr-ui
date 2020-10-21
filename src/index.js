@@ -140,7 +140,7 @@ const ButtonCircle = ({Icon, onClick, extClass, size, color, disabled, margin}) 
   )
 }
 
-const Input = ({label, type, size, placeHolder, onChange, disabled, value, defaultValue, extClass, theme, margin}) => {
+const Input = ({label, type, size, placeHolder, onChange, onFocus, disabled, value, defaultValue, extClass, theme, margin}) => {
   var inputPlaceHolder = ''
   var inputDisabled = false
   var formStyle = style['label-input'] 
@@ -201,6 +201,7 @@ const Input = ({label, type, size, placeHolder, onChange, disabled, value, defau
         onChange={onChange}
         placeholder={inputPlaceHolder}
         className={inputStyle}
+        onFocus={onFocus}
 
       />
     </label>
