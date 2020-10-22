@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button, ButtonCircle, Input, CheckBox, Radio, Alert, Confirm, Modal, InputArea   }  from 'blr-ui'
+import { Button, ButtonCircle, Input, CheckBox, Radio, Alert, Confirm, Modal, InputArea  }  from 'blr-ui'
 import 'blr-ui/dist/index.css'
 import {AiOutlineFacebook} from 'react-icons/ai'
 import {BsArrowLeft} from 'react-icons/bs'
