@@ -1,3 +1,5 @@
+
+
 .disabled {
   opacity: 0.4 !important;
   color: rgba(0,0,0,0.75) !important;
@@ -314,7 +316,7 @@ button {
   border: 8px solid white !important;
   border-radius: 2px !important;
   outline: none !important;
-  background: red !important;
+  /* background: red !important; */
   position: relative !important;
   box-shadow: 0px 0px 0px 1px #888888 !important;
 
@@ -325,7 +327,7 @@ button {
 .form-checkbox > input:checked {
   border: 8px solid white !important;
   
-  background-color: #34495E !important;
+  /* background-color: #34495E !important; */
 }
 
 .form-checkbox > input:checked::before{
@@ -789,7 +791,39 @@ button {
   margin-right: 15px;
 }
 
+.mobile-header {
+  width: 100%;
+  height: calc(60px + env(safe-area-inset-top));
+  min-height: calc(60px + env(safe-area-inset-top));
+  padding-top: env(safe-area-inset-top);
+  box-sizing: border-box;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: #001741;
+  font-weight: 800;
+}
 
+.mobile-header > :nth-child(1){
+  position: absolute;
+  left: 20px;
+  width: 24px;
+  height: 24px;
+}
+
+.spinning-icon {
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@media only screen and (min-width: 1025px) {
+  .mobile-header {
+    display: none;
+  }
+}
 
 
 @media only screen and (max-width: 320px) {
@@ -809,3 +843,8 @@ button {
     border-radius: 0;
   }
 }
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+

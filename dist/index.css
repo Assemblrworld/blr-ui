@@ -1,3 +1,5 @@
+
+
 ._styles-module__disabled__2RWmX {
   opacity: 0.4 !important;
   color: rgba(0,0,0,0.75) !important;
@@ -329,7 +331,7 @@ button {
   border: 8px solid white !important;
   border-radius: 2px !important;
   outline: none !important;
-  background: red !important;
+  /* background: red !important; */
   position: relative !important;
   box-shadow: 0px 0px 0px 1px #888888 !important;
 
@@ -340,7 +342,7 @@ button {
 ._styles-module__form-checkbox__3NosP > input:checked {
   border: 8px solid white !important;
   
-  background-color: #34495E !important;
+  /* background-color: #34495E !important; */
 }
 
 ._styles-module__form-checkbox__3NosP > input:checked::before{
@@ -819,7 +821,40 @@ button {
   margin-right: 15px;
 }
 
+._styles-module__mobile-header__17jS4 {
+  width: 100%;
+  height: calc(60px + env(safe-area-inset-top));
+  min-height: calc(60px + env(safe-area-inset-top));
+  padding-top: env(safe-area-inset-top);
+  box-sizing: border-box;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: #001741;
+  font-weight: 800;
+}
 
+._styles-module__mobile-header__17jS4 > :nth-child(1){
+  position: absolute;
+  left: 20px;
+  width: 24px;
+  height: 24px;
+}
+
+._styles-module__spinning-icon__3DxlQ {
+  width: 24px;
+  height: 24px;
+  -webkit-animation: _styles-module__spin__1sp4O 1s linear infinite;
+          animation: _styles-module__spin__1sp4O 1s linear infinite;
+}
+
+@media only screen and (min-width: 1025px) {
+  ._styles-module__mobile-header__17jS4 {
+    display: none;
+  }
+}
 
 
 @media only screen and (max-width: 320px) {
@@ -839,3 +874,6 @@ button {
     border-radius: 0;
   }
 }
+@-webkit-keyframes _styles-module__spin__1sp4O { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes _styles-module__spin__1sp4O { 100% { transform:rotate(360deg); } }
+

@@ -1,8 +1,10 @@
 import React from 'react';
 import { FiAlertTriangle } from 'react-icons/fi';
 import { AiFillCloseCircle } from 'react-icons/ai';
+import { BsArrowRepeat, BsCheckCircle, BsArrowLeft } from 'react-icons/bs';
+import 'react-transition-group';
 
-var style = {"disabled":"_styles-module__disabled__2RWmX","medium-size":"_styles-module__medium-size__2LpS7","small-size":"_styles-module__small-size__1Dccc","xsmall-size":"_styles-module__xsmall-size__2HSWc","dark-mode":"_styles-module__dark-mode__3yj9P","btn":"_styles-module__btn__1Pz2d","btn-circle":"_styles-module__btn-circle__ZMOEZ","btn-circle-custom":"_styles-module__btn-circle-custom__38f37","square-btn":"_styles-module__square-btn__1HEK_","default-circle-btn":"_styles-module__default-circle-btn__39XKQ","medium-circle-btn":"_styles-module__medium-circle-btn__2qA6O","small-circle-btn":"_styles-module__small-circle-btn__38yRp","xsmall-btn":"_styles-module__xsmall-btn__1F4aM","xsmall-circle-btn":"_styles-module__xsmall-circle-btn__1P2U1","primary-btn":"_styles-module__primary-btn__39bnp","secondary-btn":"_styles-module__secondary-btn__21664","disabled-btn":"_styles-module__disabled-btn__1hoGZ","transparent-btn":"_styles-module__transparent-btn__oBYU2","white-btn":"_styles-module__white-btn__DvBYY","color-btn":"_styles-module__color-btn__MHNEW","label-input":"_styles-module__label-input__32_3E","label-input-dark":"_styles-module__label-input-dark__2ZEov","form-disabled":"_styles-module__form-disabled__cD1yu","input-area":"_styles-module__input-area__34vFI","form-checkbox":"_styles-module__form-checkbox__3NosP","form-checkbox-dark":"_styles-module__form-checkbox-dark__3IIVU","form-radio":"_styles-module__form-radio__2uu7E","form-radio-dark":"_styles-module__form-radio-dark__2VXtv","popup-overlay":"_styles-module__popup-overlay__1oBGy","alert-container":"_styles-module__alert-container__2rI0b","body":"_styles-module__body__2mo3X","footer":"_styles-module__footer__24OKz","confirm-container":"_styles-module__confirm-container__3K3_g","modal-container":"_styles-module__modal-container__1DUXS","close-btn":"_styles-module__close-btn__3viwp","header":"_styles-module__header__1aDvk","default-modal-footer":"_styles-module__default-modal-footer__2R1Fn"};
+var style = {"disabled":"_styles-module__disabled__2RWmX","medium-size":"_styles-module__medium-size__2LpS7","small-size":"_styles-module__small-size__1Dccc","xsmall-size":"_styles-module__xsmall-size__2HSWc","dark-mode":"_styles-module__dark-mode__3yj9P","btn":"_styles-module__btn__1Pz2d","btn-circle":"_styles-module__btn-circle__ZMOEZ","btn-circle-custom":"_styles-module__btn-circle-custom__38f37","square-btn":"_styles-module__square-btn__1HEK_","default-circle-btn":"_styles-module__default-circle-btn__39XKQ","medium-circle-btn":"_styles-module__medium-circle-btn__2qA6O","small-circle-btn":"_styles-module__small-circle-btn__38yRp","xsmall-btn":"_styles-module__xsmall-btn__1F4aM","xsmall-circle-btn":"_styles-module__xsmall-circle-btn__1P2U1","primary-btn":"_styles-module__primary-btn__39bnp","secondary-btn":"_styles-module__secondary-btn__21664","disabled-btn":"_styles-module__disabled-btn__1hoGZ","transparent-btn":"_styles-module__transparent-btn__oBYU2","white-btn":"_styles-module__white-btn__DvBYY","color-btn":"_styles-module__color-btn__MHNEW","label-input":"_styles-module__label-input__32_3E","label-input-dark":"_styles-module__label-input-dark__2ZEov","form-disabled":"_styles-module__form-disabled__cD1yu","input-area":"_styles-module__input-area__34vFI","form-checkbox":"_styles-module__form-checkbox__3NosP","form-checkbox-dark":"_styles-module__form-checkbox-dark__3IIVU","form-radio":"_styles-module__form-radio__2uu7E","form-radio-dark":"_styles-module__form-radio-dark__2VXtv","popup-overlay":"_styles-module__popup-overlay__1oBGy","alert-container":"_styles-module__alert-container__2rI0b","body":"_styles-module__body__2mo3X","footer":"_styles-module__footer__24OKz","confirm-container":"_styles-module__confirm-container__3K3_g","modal-container":"_styles-module__modal-container__1DUXS","close-btn":"_styles-module__close-btn__3viwp","header":"_styles-module__header__1aDvk","default-modal-footer":"_styles-module__default-modal-footer__2R1Fn","mobile-header":"_styles-module__mobile-header__17jS4","spinning-icon":"_styles-module__spinning-icon__3DxlQ","spin":"_styles-module__spin__1sp4O"};
 
 const Button = ({
   text,
@@ -15,7 +17,8 @@ const Button = ({
   width,
   shape,
   Icon,
-  margin
+  margin,
+  loading
 }) => {
   var buttonStyle = style.btn;
   var buttonColor = 'linear-gradient(105deg, #24B9E1 0%, #7166C4 100%)';
@@ -98,6 +101,15 @@ const Button = ({
 
   if (margin === undefined) {
     margin = [0, 0, 20, 0];
+  }
+
+  if (loading) {
+    Icon = () => /*#__PURE__*/React.createElement(BsArrowRepeat, {
+      style: {
+        fil: 'white'
+      },
+      className: style['spinning-icon']
+    });
   }
 
   return /*#__PURE__*/React.createElement("button", {
@@ -431,12 +443,24 @@ const Alert = ({
   hideAlert,
   label,
   buttonText,
-  Icon
+  Icon,
+  type,
+  loading
 }) => {
   var render = null;
 
   if (buttonText === undefined) {
     buttonText = 'Ok';
+  }
+
+  if (type === 'success') {
+    Icon = () => /*#__PURE__*/React.createElement(BsCheckCircle, {
+      style: {
+        width: 24,
+        height: 24,
+        fill: '#24B9E1'
+      }
+    });
   }
 
   if (visibility === true) {
@@ -464,8 +488,10 @@ const Alert = ({
       className: style['footer']
     }, /*#__PURE__*/React.createElement(Button, {
       size: "s",
+      loading: loading,
       text: buttonText,
-      onClick: hideAlert
+      onClick: hideAlert,
+      margin: [0, 0, 0, 0]
     }))));
   }
 
@@ -480,7 +506,8 @@ const Confirm = ({
   primaryButtonText,
   secondaryButtonText,
   primaryButtonStyle,
-  Icon
+  Icon,
+  loading
 }) => {
   var render = null;
   var button1Style = 'primary';
@@ -525,13 +552,16 @@ const Confirm = ({
       styles: button1Style,
       color: primaryButtonStyle === 'red' ? 'red' : null,
       text: primaryButtonText,
-      onClick: () => confirmAction(true)
+      onClick: () => confirmAction(true),
+      margin: [0, 0, 0, 0],
+      loading: loading
     }), /*#__PURE__*/React.createElement(Button, {
       size: "s",
       style: "",
       text: secondaryButtonText,
       onClick: () => confirmAction(false),
-      styles: "transparent"
+      styles: "transparent",
+      margin: [0, 0, 0, 0]
     }))));
   }
 
@@ -553,7 +583,8 @@ const Modal = ({
   primaryButtonAction,
   primaryButtonText,
   secondaryButtonAction,
-  secondaryButtonText
+  secondaryButtonText,
+  loading
 }) => {
   var render = null;
 
@@ -598,7 +629,8 @@ const Modal = ({
       margin: [0, 10, 0, 0],
       size: "s",
       text: primaryButtonText,
-      onClick: primaryButtonAction
+      onClick: primaryButtonAction,
+      loading: loading
     }), /*#__PURE__*/React.createElement(Button, {
       size: "s",
       styles: "transparent",
@@ -616,5 +648,21 @@ const Modal = ({
   return render;
 };
 
-export { Alert, Button, ButtonCircle, CheckBox, Confirm, Input, InputArea, Modal, Radio };
+const MobileHeader = ({
+  label,
+  buttonAction,
+  buttonVisibility,
+  extClass
+}) => {
+  return /*#__PURE__*/React.createElement("div", {
+    className: style['mobile-header'] + ' ' + extClass
+  }, buttonVisibility !== false ? /*#__PURE__*/React.createElement(BsArrowLeft, {
+    onClick: buttonAction,
+    style: {
+      fil: '#001741'
+    }
+  }) : null, label);
+};
+
+export { Alert, Button, ButtonCircle, CheckBox, Confirm, Input, InputArea, MobileHeader, Modal, Radio };
 //# sourceMappingURL=index.modern.js.map

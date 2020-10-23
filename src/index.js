@@ -2,8 +2,23 @@ import React from 'react'
 import style from './styles.module.css'
 import {FiAlertTriangle} from 'react-icons/fi'
 import {AiFillCloseCircle} from 'react-icons/ai'
+import {BsArrowLeft, BsArrowRepeat, BsCheckCircle} from 'react-icons/bs'
+import { Transition } from 'react-transition-group';
 
-const Button = ({text, onClick, extClass, color, styles, disabled, size, width, shape, Icon, margin})  => {
+const transitionDuration = 300;
+
+const defaultStyle = {
+  transition: `opacity ${transitionDuration}ms ease-in-out`,
+  opacity: 0,
+}
+const transitionStyles = {
+  entering: { opacity: 1 },
+  entered:  { opacity: 1 },
+  exiting:  { opacity: 0 },
+  exited:  { opacity: 0 },
+};
+
+const Button = ({text, onClick, extClass, color, styles, disabled, size, width, shape, Icon, margin, loading})  => {
   var buttonStyle = style.btn
   var buttonColor = 'linear-gradient(105deg, #24B9E1 0%, #7166C4 100%)'
   var buttonDisabled = false
@@ -78,6 +93,10 @@ const Button = ({text, onClick, extClass, color, styles, disabled, size, width, 
 
   if(margin===undefined){
     margin=[0,0,20,0]
+  }
+
+  if(loading){
+    Icon = () => <BsArrowRepeat style={{fil:'white'}} className={style['spinning-icon']}/>
   }
   
   return (
@@ -366,11 +385,15 @@ const Radio = ({label, desc , onChange, name, checked, disabled, extClass, theme
   )
 }
 
-const Alert = ({visibility, context, hideAlert, label, buttonText, Icon}) => {
+const Alert = ({visibility, context, hideAlert, label, buttonText, Icon, type, loading}) => {
   var render = null
 
   if(buttonText === undefined){
     buttonText = 'Ok'
+  }
+
+  if(type === 'success'){
+    Icon = () => <BsCheckCircle style={{width:24,height:24,fill:'#24B9E1'}}/>
   }
   
   if(visibility === true){
@@ -385,8 +408,10 @@ const Alert = ({visibility, context, hideAlert, label, buttonText, Icon}) => {
             <div className={style['footer']}>
               <Button
                 size='s'
+                loading={loading}
                 text={buttonText}
                 onClick={hideAlert}
+                margin={[0,0,0,0]}
               />
             </div>
           </div>
@@ -397,7 +422,7 @@ const Alert = ({visibility, context, hideAlert, label, buttonText, Icon}) => {
   return render
 }
 
-const Confirm = ({visibility, context, confirmAction, label, primaryButtonText, secondaryButtonText, primaryButtonStyle, Icon}) => {
+const Confirm = ({visibility, context, confirmAction, label, primaryButtonText, secondaryButtonText, primaryButtonStyle, Icon, loading}) => {
   var render = null
   
   var button1Style = 'primary'
@@ -432,6 +457,8 @@ const Confirm = ({visibility, context, confirmAction, label, primaryButtonText, 
                 color={primaryButtonStyle==='red'?'red':null}
                 text={primaryButtonText}
                 onClick={()=>confirmAction(true)}
+                margin={[0,0,0,0]}
+                loading={loading}
               />
               <Button
                 size='s'
@@ -439,6 +466,7 @@ const Confirm = ({visibility, context, confirmAction, label, primaryButtonText, 
                 text={secondaryButtonText}
                 onClick={()=>confirmAction(false)}
                 styles='transparent'
+                margin={[0,0,0,0]}
               />
             </div>
           </div>
@@ -449,7 +477,7 @@ const Confirm = ({visibility, context, confirmAction, label, primaryButtonText, 
   return render
 }
 
-const Modal = ({visibility, width, headerLabel, bodyLabel, HeaderComponent, BodyComponent, FooterComponent, hideModal, closeButton, showHeader, showFooter, primaryButtonAction, primaryButtonText, secondaryButtonAction, secondaryButtonText}) => {
+const Modal = ({visibility, width, headerLabel, bodyLabel, HeaderComponent, BodyComponent, FooterComponent, hideModal, closeButton, showHeader, showFooter, primaryButtonAction, primaryButtonText, secondaryButtonAction, secondaryButtonText, loading}) => {
   var render = null 
   if(width === undefined){
     width = 320
@@ -490,6 +518,7 @@ const Modal = ({visibility, width, headerLabel, bodyLabel, HeaderComponent, Body
                       size='s'
                       text={primaryButtonText}
                       onClick={primaryButtonAction}
+                      loading={loading}
                     />
                     <Button
                       size='s'
@@ -521,6 +550,21 @@ const Modal = ({visibility, width, headerLabel, bodyLabel, HeaderComponent, Body
   return render
 }
 
+const MobileHeader = ({label, buttonAction, buttonVisibility, extClass}) => {
+  return (
+    <div className={style['mobile-header']+' '+extClass}>
+      {(buttonVisibility!==false)?(
+        <BsArrowLeft 
+          onClick={buttonAction}
+          style={{fil:'#001741'}}
+        />
+      ):null}
+      
+      {label}
+    </div>
+  )
+} 
+
 export {
   Button,
   ButtonCircle,
@@ -530,5 +574,6 @@ export {
   Alert,
   Confirm,
   Modal,
-  InputArea
+  InputArea,
+  MobileHeader
 }

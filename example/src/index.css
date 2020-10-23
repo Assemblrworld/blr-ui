@@ -44,7 +44,7 @@ code {
   box-sizing: border-box;
   padding: 20px;
   box-sizing: border-box;
-  
+  position: relative;
   
 }
 
@@ -93,5 +93,3 @@ code {
 .acc-component > div.active{
   height: 300px ;
 }
-
-

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button, ButtonCircle, Input, CheckBox, Radio, Alert, Confirm, Modal, InputArea  }  from 'blr-ui'
+import { Button, ButtonCircle, Input, CheckBox, Radio, Alert, Confirm, Modal, InputArea, MobileHeader  }  from 'blr-ui'
 import 'blr-ui/dist/index.css'
 import {AiOutlineFacebook} from 'react-icons/ai'
 import {BsArrowLeft} from 'react-icons/bs'
@@ -25,6 +25,11 @@ const Component = ({style,theme, context}) => {
     <div 
       style={style}
       className='child'>
+
+        <MobileHeader
+          label='Account Setting'
+          buttonAction={()=>console.log('clicked')}
+        />
 
         {/* SHOW ALERT DIALOG */}
         <Button 
@@ -526,6 +531,8 @@ class App extends React.Component {
           buttonText='Okay'
           label='Something wrong with you, please try again!'
           hideAlert={()=>context.setState({alertVisibility:false})}
+          type='success'
+          loading={true}
         />
 
         <Confirm
