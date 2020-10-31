@@ -3,20 +3,8 @@ import style from './styles.module.css'
 import {FiAlertTriangle} from 'react-icons/fi'
 import {AiFillCloseCircle} from 'react-icons/ai'
 import {BsArrowLeft, BsArrowRepeat, BsCheckCircle} from 'react-icons/bs'
-import { Transition } from 'react-transition-group';
 
-const transitionDuration = 300;
 
-const defaultStyle = {
-  transition: `opacity ${transitionDuration}ms ease-in-out`,
-  opacity: 0,
-}
-const transitionStyles = {
-  entering: { opacity: 1 },
-  entered:  { opacity: 1 },
-  exiting:  { opacity: 0 },
-  exited:  { opacity: 0 },
-};
 
 const Button = ({text, onClick, extClass, color, styles, disabled, size, width, shape, Icon, margin, loading})  => {
   var buttonStyle = style.btn
