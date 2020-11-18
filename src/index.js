@@ -283,7 +283,7 @@ const InputArea = ({label, type, size, placeHolder, onChange, onClick, disabled,
   )
 }
 
-const CheckBox = ({label, desc , onClick, checked, disabled, extClass, theme, margin}) => {
+const CheckBox = ({label, desc , onClick, checked, value, disabled, extClass, theme, margin}) => {
   var formStyle = style['form-checkbox']
   var formDisabled = false 
 
@@ -307,6 +307,7 @@ const CheckBox = ({label, desc , onClick, checked, disabled, extClass, theme, ma
     checked = false
   }
 
+
   return (
     <label 
     style={{marginTop:margin[0],marginRight:margin[1],marginBottom:margin[2],marginLeft:margin[3]}}
@@ -315,6 +316,7 @@ const CheckBox = ({label, desc , onClick, checked, disabled, extClass, theme, ma
         disabled={formDisabled}
         onClick={onClick}
         type='checkbox'
+        checked={value?value:null}
         defaultChecked={checked}
       />
       <div>

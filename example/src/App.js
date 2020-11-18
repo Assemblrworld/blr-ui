@@ -422,6 +422,7 @@ const Component = ({style,theme, context}) => {
         />
 
         <CheckBox
+        value={true}
           theme={theme==='dark'?'dark':null}
           label='Ini headline'
           onClick={e=>console.log('Headline : '+e.target.checked)}

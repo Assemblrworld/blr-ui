@@ -334,7 +334,8 @@ button {
   /* background: red !important; */
   position: relative !important;
   box-shadow: 0px 0px 0px 1px #888888 !important;
-
+  padding: 0 0 2px 2px ;
+  box-sizing: border-box;
 }
 
 
@@ -349,7 +350,7 @@ button {
   content: '\2713' !important;
   color: black !important;
   position: absolute !important;
-  left: -5px !important;
+  left: -4px !important;
   top: -7px !important;
   width: 5px !important;
   height: 5px !important;
@@ -410,9 +411,11 @@ button {
   border: 8px solid #020726 !important;
   border-radius: 2px !important;
   outline: none !important;
-  background: red !important;
+  background: none !important;
   position: relative !important;
   box-shadow: 0px 0px 0px 1px #888888 !important;
+  padding: 0 0 2px 2px ;
+  box-sizing: border-box;
 }
 
 
@@ -425,7 +428,7 @@ button {
   content: '\2713' !important;
   color: white !important;
   position: absolute !important;
-  left: -5px !important;
+  left: -4px !important;
   top: -7px !important;
   width: 5px !important;
   height: 5px !important;

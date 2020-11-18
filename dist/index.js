@@ -339,6 +339,7 @@ var CheckBox = function CheckBox(_ref5) {
       desc = _ref5.desc,
       onClick = _ref5.onClick,
       checked = _ref5.checked,
+      value = _ref5.value,
       disabled = _ref5.disabled,
       extClass = _ref5.extClass,
       theme = _ref5.theme,
@@ -379,6 +380,7 @@ var CheckBox = function CheckBox(_ref5) {
     disabled: formDisabled,
     onClick: onClick,
     type: "checkbox",
+    checked: value ? value : null,
     defaultChecked: checked
   }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, label), desc ? /*#__PURE__*/React.createElement("p", null, desc) : null));
 };

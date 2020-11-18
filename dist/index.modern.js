@@ -339,6 +339,7 @@ const CheckBox = ({
   desc,
   onClick,
   checked,
+  value,
   disabled,
   extClass,
   theme,
@@ -380,6 +381,7 @@ const CheckBox = ({
     disabled: formDisabled,
     onClick: onClick,
     type: "checkbox",
+    checked: value ? value : null,
     defaultChecked: checked
   }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, label), desc ? /*#__PURE__*/React.createElement("p", null, desc) : null));
 };
