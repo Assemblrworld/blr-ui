@@ -581,11 +581,7 @@ class App extends React.Component {
           width={400}
           visibility={modal2Visibility}
           context={context}
-          HeaderComponent={()=>(
-            <div>
-              THIS IS CUSTOM HEADER
-            </div>
-          )}
+          headerLabel={'ini judul yang lumayan panjang jadi perlu di cek si paddingnya biar ga kena close button'}
 
           BodyComponent={()=>(
             <div>

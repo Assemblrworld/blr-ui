@@ -775,6 +775,7 @@ button {
   min-width: 20px;
   height: 20px;
   min-height: 20px;
+
 }
 
 ._styles-module__modal-container__1DUXS > ._styles-module__header__1aDvk{
@@ -786,6 +787,19 @@ button {
   padding: 20px;
   box-sizing: content-box;
   border-bottom: 1px solid #F4F4F4;
+}
+
+._styles-module__modal-container__1DUXS > ._styles-module__header-padding__1vZDf{
+  font-size: 16px;
+  color: #001741;
+  font-weight: bold;
+  text-align: justify;
+  width: calc(100% - 70px);
+  padding: 20px;
+  box-sizing: content-box;
+  border-bottom: 1px solid #F4F4F4;
+  margin-right: 30px;
+  
 }
 
 ._styles-module__modal-container__1DUXS > ._styles-module__body__2mo3X{
@@ -837,6 +851,7 @@ button {
   position: relative;
   color: #001741;
   font-weight: 800;
+  box-shadow: 0 0 10px 0px #00000040;
 }
 
 ._styles-module__mobile-header__17jS4 > :nth-child(1){

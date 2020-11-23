@@ -488,7 +488,7 @@ const Modal = ({visibility, width, headerLabel, bodyLabel, HeaderComponent, Body
           <div className={style['modal-container']} style={{width:width}}>
 
             {showHeader!==false?(
-              <div className={style['header']}>
+              <div className={closeButton!==false?style['header-padding']:style['header']}>
                 {HeaderComponent?(<HeaderComponent/>):null}
                 {headerLabel?<span>{headerLabel}</span>:null}
               </div>
@@ -540,9 +540,11 @@ const Modal = ({visibility, width, headerLabel, bodyLabel, HeaderComponent, Body
   return render
 }
 
-const MobileHeader = ({label, buttonAction, buttonVisibility, extClass}) => {
+const MobileHeader = ({label, buttonAction, buttonVisibility, extClass, alwaysVisible}) => {
   return (
-    <div className={style['mobile-header']+' '+extClass}>
+    <div 
+      style={alwaysVisible?{display:'flex'}:null}
+      className={style['mobile-header']+' '+extClass}>
       {(buttonVisibility!==false)?(
         <BsArrowLeft 
           onClick={buttonAction}
