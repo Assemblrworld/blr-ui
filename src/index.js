@@ -562,12 +562,14 @@ const Banner = ({ visibility, Content, backgroundColor, buttonText, hideAction, 
   if(position){
     bannerPosition = position
   }
-  
+  var bannerColor = '#D9005C'
+  if(backgroundColor){
+    bannerColor = backgroundColor
+  }
   const contentType = typeof(Content)
-  console.log(contentType)
   return visibility?(
     <div
-      style={{backgroundColor:backgroundColor, marginTop:bannerPosition[0], marginLeft:bannerPosition[3]}}
+      style={{backgroundColor:bannerColor, marginTop:bannerPosition[0], marginLeft:bannerPosition[3]}}
       className={style['banner-container']+' '+extClass}>
       <div>{contentType==='string'?Content:<Content/>}</div>
       <Button

@@ -685,11 +685,16 @@ const Banner = ({
     bannerPosition = position;
   }
 
+  var bannerColor = '#D9005C';
+
+  if (backgroundColor) {
+    bannerColor = backgroundColor;
+  }
+
   const contentType = typeof Content;
-  console.log(contentType);
   return visibility ? /*#__PURE__*/React.createElement("div", {
     style: {
-      backgroundColor: backgroundColor,
+      backgroundColor: bannerColor,
       marginTop: bannerPosition[0],
       marginLeft: bannerPosition[3]
     },

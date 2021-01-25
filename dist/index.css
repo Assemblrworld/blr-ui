@@ -881,6 +881,7 @@ button {
   min-height: 70px;
   border-radius: 8px;
   color: white;
+  z-index: 9999;
 }
 
 ._styles-module__banner-container__3MBPa > :nth-child(1){
