@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button, ButtonCircle, Input, CheckBox, Radio, Alert, Confirm, Modal, InputArea, MobileHeader  }  from 'blr-ui'
+import { Button, ButtonCircle, Input, CheckBox, Radio, Alert, Confirm, Modal, InputArea, MobileHeader, Banner  }  from 'blr-ui'
 import 'blr-ui/dist/index.css'
 import {AiOutlineFacebook} from 'react-icons/ai'
 import {BsArrowLeft} from 'react-icons/bs'
@@ -11,7 +11,7 @@ const Component = ({style,theme, context}) => {
   var exampleString = ''
   var exampleHeaderStyle = 'example-header'
   var exampleStyle = 'example'
-  const {alertVisibility, confirmVisibility, modalVisibility, modal1Visibility, modal2Visibility, modal3Visibility} = context.state
+  const {bannerVisibility,alertVisibility, confirmVisibility, modalVisibility, modal1Visibility, modal2Visibility, modal3Visibility} = context.state
   
 
   if(theme === 'dark'){
@@ -26,9 +26,27 @@ const Component = ({style,theme, context}) => {
       style={style}
       className='child'>
 
+        <Banner
+          backgroundColor='#D9005C'
+          visibility={bannerVisibility}
+          hideAction={()=>{context.setState({bannerVisibility:false})}}
+          buttonText='Repurchase plan'
+          Content={()=>{
+            return <div style={{color:'white'}}>Your Medium plan is expired, please upgrade to keep using your previuos actived featured</div>
+          }}
+          //Content='asdasd'
+        />
+
         <MobileHeader
           label='Account Setting'
           buttonAction={()=>console.log('clicked')}
+        />
+
+        <Button
+           width='100%'
+          onClick={()=>context.setState({bannerVisibility:true})} 
+          extClass='btn'
+          text='Show Banner'
         />
 
         {/* SHOW ALERT DIALOG */}
@@ -239,6 +257,9 @@ const Component = ({style,theme, context}) => {
           extClass='btn'
           text='Rectangle'
         />
+
+        
+
 
 {/* USER GUIDELINE*/}
 <div className={exampleHeaderStyle}>How to use Rounded Button</div>

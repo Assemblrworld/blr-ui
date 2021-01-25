@@ -5,7 +5,7 @@ var fi = require('react-icons/fi');
 var ai = require('react-icons/ai');
 var bs = require('react-icons/bs');
 
-var style = {"disabled":"_styles-module__disabled__2RWmX","medium-size":"_styles-module__medium-size__2LpS7","small-size":"_styles-module__small-size__1Dccc","xsmall-size":"_styles-module__xsmall-size__2HSWc","dark-mode":"_styles-module__dark-mode__3yj9P","btn":"_styles-module__btn__1Pz2d","btn-circle":"_styles-module__btn-circle__ZMOEZ","btn-circle-custom":"_styles-module__btn-circle-custom__38f37","square-btn":"_styles-module__square-btn__1HEK_","default-circle-btn":"_styles-module__default-circle-btn__39XKQ","medium-circle-btn":"_styles-module__medium-circle-btn__2qA6O","small-circle-btn":"_styles-module__small-circle-btn__38yRp","xsmall-btn":"_styles-module__xsmall-btn__1F4aM","xsmall-circle-btn":"_styles-module__xsmall-circle-btn__1P2U1","primary-btn":"_styles-module__primary-btn__39bnp","secondary-btn":"_styles-module__secondary-btn__21664","disabled-btn":"_styles-module__disabled-btn__1hoGZ","transparent-btn":"_styles-module__transparent-btn__oBYU2","white-btn":"_styles-module__white-btn__DvBYY","color-btn":"_styles-module__color-btn__MHNEW","label-input":"_styles-module__label-input__32_3E","label-input-dark":"_styles-module__label-input-dark__2ZEov","form-disabled":"_styles-module__form-disabled__cD1yu","input-area":"_styles-module__input-area__34vFI","form-checkbox":"_styles-module__form-checkbox__3NosP","form-checkbox-dark":"_styles-module__form-checkbox-dark__3IIVU","form-radio":"_styles-module__form-radio__2uu7E","form-radio-dark":"_styles-module__form-radio-dark__2VXtv","popup-overlay":"_styles-module__popup-overlay__1oBGy","alert-container":"_styles-module__alert-container__2rI0b","body":"_styles-module__body__2mo3X","footer":"_styles-module__footer__24OKz","confirm-container":"_styles-module__confirm-container__3K3_g","modal-container":"_styles-module__modal-container__1DUXS","close-btn":"_styles-module__close-btn__3viwp","header":"_styles-module__header__1aDvk","header-padding":"_styles-module__header-padding__1vZDf","default-modal-footer":"_styles-module__default-modal-footer__2R1Fn","mobile-header":"_styles-module__mobile-header__17jS4","spinning-icon":"_styles-module__spinning-icon__3DxlQ","spin":"_styles-module__spin__1sp4O"};
+var style = {"disabled":"_styles-module__disabled__2RWmX","medium-size":"_styles-module__medium-size__2LpS7","small-size":"_styles-module__small-size__1Dccc","xsmall-size":"_styles-module__xsmall-size__2HSWc","dark-mode":"_styles-module__dark-mode__3yj9P","btn":"_styles-module__btn__1Pz2d","btn-circle":"_styles-module__btn-circle__ZMOEZ","btn-circle-custom":"_styles-module__btn-circle-custom__38f37","square-btn":"_styles-module__square-btn__1HEK_","default-circle-btn":"_styles-module__default-circle-btn__39XKQ","medium-circle-btn":"_styles-module__medium-circle-btn__2qA6O","small-circle-btn":"_styles-module__small-circle-btn__38yRp","xsmall-btn":"_styles-module__xsmall-btn__1F4aM","xsmall-circle-btn":"_styles-module__xsmall-circle-btn__1P2U1","primary-btn":"_styles-module__primary-btn__39bnp","secondary-btn":"_styles-module__secondary-btn__21664","disabled-btn":"_styles-module__disabled-btn__1hoGZ","transparent-btn":"_styles-module__transparent-btn__oBYU2","white-btn":"_styles-module__white-btn__DvBYY","color-btn":"_styles-module__color-btn__MHNEW","label-input":"_styles-module__label-input__32_3E","label-input-dark":"_styles-module__label-input-dark__2ZEov","form-disabled":"_styles-module__form-disabled__cD1yu","input-area":"_styles-module__input-area__34vFI","form-checkbox":"_styles-module__form-checkbox__3NosP","form-checkbox-dark":"_styles-module__form-checkbox-dark__3IIVU","form-radio":"_styles-module__form-radio__2uu7E","form-radio-dark":"_styles-module__form-radio-dark__2VXtv","popup-overlay":"_styles-module__popup-overlay__1oBGy","alert-container":"_styles-module__alert-container__2rI0b","body":"_styles-module__body__2mo3X","footer":"_styles-module__footer__24OKz","confirm-container":"_styles-module__confirm-container__3K3_g","modal-container":"_styles-module__modal-container__1DUXS","close-btn":"_styles-module__close-btn__3viwp","header":"_styles-module__header__1aDvk","header-padding":"_styles-module__header-padding__1vZDf","default-modal-footer":"_styles-module__default-modal-footer__2R1Fn","mobile-header":"_styles-module__mobile-header__17jS4","spinning-icon":"_styles-module__spinning-icon__3DxlQ","spin":"_styles-module__spin__1sp4O","banner-container":"_styles-module__banner-container__3MBPa","close":"_styles-module__close__2I1sI"};
 
 var Button = function Button(_ref) {
   var text = _ref.text,
@@ -667,7 +667,44 @@ var MobileHeader = function MobileHeader(_ref10) {
   }) : null, label);
 };
 
+var Banner = function Banner(_ref11) {
+  var visibility = _ref11.visibility,
+      Content = _ref11.Content,
+      backgroundColor = _ref11.backgroundColor,
+      buttonText = _ref11.buttonText,
+      hideAction = _ref11.hideAction,
+      buttonAction = _ref11.buttonAction,
+      extClass = _ref11.extClass,
+      position = _ref11.position;
+  var bannerPosition = [80, 0];
+
+  if (position) {
+    bannerPosition = position;
+  }
+
+  var contentType = typeof Content;
+  console.log(contentType);
+  return visibility ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      backgroundColor: backgroundColor,
+      marginTop: bannerPosition[0],
+      marginLeft: bannerPosition[3]
+    },
+    className: style['banner-container'] + ' ' + extClass
+  }, /*#__PURE__*/React.createElement("div", null, contentType === 'string' ? Content : /*#__PURE__*/React.createElement(Content, null)), /*#__PURE__*/React.createElement(Button, {
+    text: buttonText,
+    styles: "white",
+    margin: [20, 0, 0, 0],
+    size: "s",
+    onClick: buttonAction
+  }), /*#__PURE__*/React.createElement(ai.AiOutlineClose, {
+    onClick: hideAction,
+    className: style['close']
+  })) : null;
+};
+
 exports.Alert = Alert;
+exports.Banner = Banner;
 exports.Button = Button;
 exports.ButtonCircle = ButtonCircle;
 exports.CheckBox = CheckBox;

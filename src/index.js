@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './styles.module.css'
 import {FiAlertTriangle} from 'react-icons/fi'
-import {AiFillCloseCircle} from 'react-icons/ai'
+import {AiFillCloseCircle, AiOutlineClose} from 'react-icons/ai'
 import {BsArrowLeft, BsArrowRepeat, BsCheckCircle} from 'react-icons/bs'
 
 
@@ -557,6 +557,34 @@ const MobileHeader = ({label, buttonAction, buttonVisibility, extClass, alwaysVi
   )
 } 
 
+const Banner = ({ visibility, Content, backgroundColor, buttonText, hideAction, buttonAction, extClass, position}) => {
+  var bannerPosition = [80, 0] // top left
+  if(position){
+    bannerPosition = position
+  }
+  
+  const contentType = typeof(Content)
+  console.log(contentType)
+  return visibility?(
+    <div
+      style={{backgroundColor:backgroundColor, marginTop:bannerPosition[0], marginLeft:bannerPosition[3]}}
+      className={style['banner-container']+' '+extClass}>
+      <div>{contentType==='string'?Content:<Content/>}</div>
+      <Button
+        text={buttonText}
+        styles='white'
+        margin={[20,0,0,0]}
+        size='s'
+        onClick={buttonAction}
+      />
+      <AiOutlineClose
+        onClick={hideAction}
+        className={style['close']}
+      />
+    </div>
+  ):null
+}
+
 export {
   Button,
   ButtonCircle,
@@ -567,5 +595,6 @@ export {
   Confirm,
   Modal,
   InputArea,
-  MobileHeader
+  MobileHeader,
+  Banner
 }

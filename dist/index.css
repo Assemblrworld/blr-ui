@@ -872,6 +872,29 @@ button {
           animation: _styles-module__spin__1sp4O 1s linear infinite;
 }
 
+._styles-module__banner-container__3MBPa {
+  padding: 20px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 80px;
+  width: calc(100% - 40px);
+  min-height: 70px;
+  border-radius: 8px;
+  color: white;
+}
+
+._styles-module__banner-container__3MBPa > :nth-child(1){
+  width: calc(100% - 40px);
+}
+
+._styles-module__banner-container__3MBPa > ._styles-module__close__2I1sI{
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+}
+
 @media only screen and (min-width: 1025px) {
   ._styles-module__mobile-header__17jS4 {
     display: none;
