@@ -375,7 +375,7 @@ const Radio = ({label, desc , onChange, name, checked, disabled, extClass, theme
   )
 }
 
-const Alert = ({visibility, context, hideAlert, label, buttonText, Icon, type, loading}) => {
+const Alert = ({visibility, extClass, context, hideAlert, label, body, buttonText, Icon, type, loading}) => {
   var render = null
 
   if(buttonText === undefined){
@@ -389,11 +389,12 @@ const Alert = ({visibility, context, hideAlert, label, buttonText, Icon, type, l
   if(visibility === true){
     render = (
       <div 
-        className={style['popup-overlay']} style={{position:'fixed',top:0,left:0,right:0,bottom:0,zIndex:999999999}}>
+        className={style['popup-overlay']+' '+extClass} style={{position:'fixed',top:0,left:0,right:0,bottom:0,zIndex:999999999}}>
           <div className={style['alert-container']}>
             <div className={style['body']}>
               {Icon?(<Icon/>):(<FiAlertTriangle style={{stroke:'red',width:20,height:20}}/>)}
               <span>{label}</span>
+              {body?<span>{body}</span>:null}
             </div>
             <div className={style['footer']}>
               <Button

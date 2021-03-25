@@ -438,8 +438,10 @@ var Radio = function Radio(_ref6) {
 
 var Alert = function Alert(_ref7) {
   var visibility = _ref7.visibility,
+      extClass = _ref7.extClass,
       hideAlert = _ref7.hideAlert,
       label = _ref7.label,
+      body = _ref7.body,
       buttonText = _ref7.buttonText,
       Icon = _ref7.Icon,
       type = _ref7.type,
@@ -464,7 +466,7 @@ var Alert = function Alert(_ref7) {
 
   if (visibility === true) {
     render = /*#__PURE__*/React.createElement("div", {
-      className: style['popup-overlay'],
+      className: style['popup-overlay'] + ' ' + extClass,
       style: {
         position: 'fixed',
         top: 0,
@@ -483,7 +485,7 @@ var Alert = function Alert(_ref7) {
         width: 20,
         height: 20
       }
-    }), /*#__PURE__*/React.createElement("span", null, label)), /*#__PURE__*/React.createElement("div", {
+    }), /*#__PURE__*/React.createElement("span", null, label), body ? /*#__PURE__*/React.createElement("span", null, body) : null), /*#__PURE__*/React.createElement("div", {
       className: style['footer']
     }, /*#__PURE__*/React.createElement(Button, {
       size: "s",

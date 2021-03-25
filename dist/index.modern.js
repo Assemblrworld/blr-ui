@@ -440,9 +440,11 @@ const Radio = ({
 
 const Alert = ({
   visibility,
+  extClass,
   context,
   hideAlert,
   label,
+  body,
   buttonText,
   Icon,
   type,
@@ -466,7 +468,7 @@ const Alert = ({
 
   if (visibility === true) {
     render = /*#__PURE__*/React.createElement("div", {
-      className: style['popup-overlay'],
+      className: style['popup-overlay'] + ' ' + extClass,
       style: {
         position: 'fixed',
         top: 0,
@@ -485,7 +487,7 @@ const Alert = ({
         width: 20,
         height: 20
       }
-    }), /*#__PURE__*/React.createElement("span", null, label)), /*#__PURE__*/React.createElement("div", {
+    }), /*#__PURE__*/React.createElement("span", null, label), body ? /*#__PURE__*/React.createElement("span", null, body) : null), /*#__PURE__*/React.createElement("div", {
       className: style['footer']
     }, /*#__PURE__*/React.createElement(Button, {
       size: "s",
