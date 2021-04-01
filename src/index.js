@@ -529,6 +529,7 @@ const Modal = ({visibility, width, headerLabel, bodyLabel, HeaderComponent, Body
                 className={style['close-btn']}
                 style={{fill:'#67697C'}}
                 onClick={hideModal}
+                id='modal-close-button'
               />
             ):null}
             
