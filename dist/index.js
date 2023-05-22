@@ -5,62 +5,53 @@ var fi = require('react-icons/fi');
 var ai = require('react-icons/ai');
 var bs = require('react-icons/bs');
 
-var style = {"disabled":"_styles-module__disabled__2RWmX","medium-size":"_styles-module__medium-size__2LpS7","small-size":"_styles-module__small-size__1Dccc","xsmall-size":"_styles-module__xsmall-size__2HSWc","dark-mode":"_styles-module__dark-mode__3yj9P","btn":"_styles-module__btn__1Pz2d","btn-circle":"_styles-module__btn-circle__ZMOEZ","btn-circle-custom":"_styles-module__btn-circle-custom__38f37","square-btn":"_styles-module__square-btn__1HEK_","default-circle-btn":"_styles-module__default-circle-btn__39XKQ","medium-circle-btn":"_styles-module__medium-circle-btn__2qA6O","small-circle-btn":"_styles-module__small-circle-btn__38yRp","xsmall-btn":"_styles-module__xsmall-btn__1F4aM","xsmall-circle-btn":"_styles-module__xsmall-circle-btn__1P2U1","primary-btn":"_styles-module__primary-btn__39bnp","secondary-btn":"_styles-module__secondary-btn__21664","disabled-btn":"_styles-module__disabled-btn__1hoGZ","transparent-btn":"_styles-module__transparent-btn__oBYU2","white-btn":"_styles-module__white-btn__DvBYY","color-btn":"_styles-module__color-btn__MHNEW","label-input":"_styles-module__label-input__32_3E","label-input-dark":"_styles-module__label-input-dark__2ZEov","form-disabled":"_styles-module__form-disabled__cD1yu","input-area":"_styles-module__input-area__34vFI","form-checkbox":"_styles-module__form-checkbox__3NosP","form-checkbox-dark":"_styles-module__form-checkbox-dark__3IIVU","form-radio":"_styles-module__form-radio__2uu7E","form-radio-dark":"_styles-module__form-radio-dark__2VXtv","popup-overlay":"_styles-module__popup-overlay__1oBGy","alert-container":"_styles-module__alert-container__2rI0b","body":"_styles-module__body__2mo3X","footer":"_styles-module__footer__24OKz","confirm-container":"_styles-module__confirm-container__3K3_g","modal-container":"_styles-module__modal-container__1DUXS","close-btn":"_styles-module__close-btn__3viwp","header":"_styles-module__header__1aDvk","header-padding":"_styles-module__header-padding__1vZDf","default-modal-footer":"_styles-module__default-modal-footer__2R1Fn","mobile-header":"_styles-module__mobile-header__17jS4","spinning-icon":"_styles-module__spinning-icon__3DxlQ","spin":"_styles-module__spin__1sp4O","banner-container":"_styles-module__banner-container__3MBPa","close":"_styles-module__close__2I1sI"};
+var style = {"disabled":"_2RWmX","medium-size":"_2LpS7","small-size":"_1Dccc","xsmall-size":"_2HSWc","dark-mode":"_3yj9P","btn":"_1Pz2d","btn-circle":"_ZMOEZ","btn-circle-custom":"_38f37","square-btn":"_1HEK_","default-circle-btn":"_39XKQ","medium-circle-btn":"_2qA6O","small-circle-btn":"_38yRp","xsmall-btn":"_1F4aM","xsmall-circle-btn":"_1P2U1","primary-btn":"_39bnp","secondary-btn":"_21664","disabled-btn":"_1hoGZ","transparent-btn":"_oBYU2","white-btn":"_DvBYY","color-btn":"_MHNEW","label-input":"_32_3E","label-input-dark":"_2ZEov","form-disabled":"_cD1yu","input-area":"_34vFI","form-checkbox":"_3NosP","form-checkbox-dark":"_3IIVU","form-radio":"_2uu7E","form-radio-dark":"_2VXtv","popup-overlay":"_1oBGy","alert-container":"_2rI0b","body":"_2mo3X","footer":"_24OKz","confirm-container":"_3K3_g","modal-container":"_1DUXS","close-btn":"_3viwp","header":"_1aDvk","header-padding":"_1vZDf","default-modal-footer":"_2R1Fn","mobile-header":"_17jS4","spinning-icon":"_3DxlQ","spin":"_1sp4O","banner-container":"_3MBPa","close":"_2I1sI"};
 
 var Button = function Button(_ref) {
   var text = _ref.text,
-      onClick = _ref.onClick,
-      extClass = _ref.extClass,
-      color = _ref.color,
-      styles = _ref.styles,
-      disabled = _ref.disabled,
-      size = _ref.size,
-      width = _ref.width,
-      shape = _ref.shape,
-      Icon = _ref.Icon,
-      margin = _ref.margin,
-      loading = _ref.loading;
+    onClick = _ref.onClick,
+    extClass = _ref.extClass,
+    color = _ref.color,
+    styles = _ref.styles,
+    disabled = _ref.disabled,
+    size = _ref.size,
+    width = _ref.width,
+    shape = _ref.shape,
+    Icon = _ref.Icon,
+    margin = _ref.margin,
+    loading = _ref.loading;
   var buttonStyle = style.btn;
   var buttonColor = 'linear-gradient(105deg, #24B9E1 0%, #7166C4 100%)';
   var buttonDisabled = false;
   var buttonWidth = 'max-content';
-
   if (disabled) {
     buttonStyle += ' ' + style['disabled-btn'];
     buttonDisabled = disabled;
   }
-
   if (shape === 'rectangle') {
     buttonStyle += ' ' + style['square-btn'];
   }
-
   switch (styles) {
     case 'primary':
       buttonStyle += ' ' + style['primary-btn'];
       break;
-
     case 'secondary':
       buttonStyle += ' ' + style['secondary-btn'];
       break;
-
     case 'transparent':
       buttonStyle += ' ' + style['transparent-btn'];
       break;
-
     case 'white':
       buttonStyle += ' ' + style['white-btn'];
       break;
-
     case 'color':
       buttonStyle += ' ' + style['color-btn'];
       buttonColor = color;
       break;
-
     default:
       buttonStyle += ' ' + style['primary-btn'];
       break;
   }
-
   if (size === 'm') {
     buttonStyle += ' ' + style['medium-size'];
   } else if (size === 's') {
@@ -68,41 +59,32 @@ var Button = function Button(_ref) {
   } else if (size === 'xs') {
     buttonStyle += ' ' + style['xsmall-size'];
   }
-
   switch (buttonColor) {
     case 'red':
       buttonColor = '#D9005C';
       break;
-
     case 'yellow':
       buttonColor = '#F7BE2D';
       break;
-
     case 'blue':
       buttonColor = '#354199';
       break;
-
     case 'cyan':
       buttonColor = '#24B9E1';
       break;
-
     case 'black':
       buttonColor = '#020726';
       break;
   }
-
   if (extClass) {
     buttonStyle += ' ' + extClass;
   }
-
   if (width !== undefined) {
     buttonWidth = width;
   }
-
   if (margin === undefined) {
     margin = [0, 0, 20, 0];
   }
-
   if (loading) {
     Icon = function Icon() {
       return /*#__PURE__*/React.createElement(bs.BsArrowRepeat, {
@@ -113,7 +95,6 @@ var Button = function Button(_ref) {
       });
     };
   }
-
   return /*#__PURE__*/React.createElement("button", {
     onClick: !buttonDisabled ? onClick : null,
     className: buttonStyle,
@@ -128,30 +109,26 @@ var Button = function Button(_ref) {
     }
   }, Icon ? /*#__PURE__*/React.createElement(Icon, null) : null, text);
 };
-
 var ButtonCircle = function ButtonCircle(_ref2) {
   var Icon = _ref2.Icon,
-      onClick = _ref2.onClick,
-      extClass = _ref2.extClass,
-      size = _ref2.size,
-      color = _ref2.color,
-      disabled = _ref2.disabled,
-      margin = _ref2.margin;
+    onClick = _ref2.onClick,
+    extClass = _ref2.extClass,
+    size = _ref2.size,
+    color = _ref2.color,
+    disabled = _ref2.disabled,
+    margin = _ref2.margin;
   var buttonStyle = '';
   var buttonColor = color;
   var buttonOpacity = 1;
   var buttonDisabled = disabled;
-
   if (disabled) {
     buttonOpacity = 0.2;
   }
-
   if (buttonColor !== undefined) {
     buttonStyle = style['btn-circle-custom'];
   } else {
     buttonStyle = style['btn-circle'];
   }
-
   if (size === 'm') {
     buttonStyle += ' ' + style['medium-circle-btn'];
   } else if (size === 's') {
@@ -161,15 +138,12 @@ var ButtonCircle = function ButtonCircle(_ref2) {
   } else {
     buttonStyle += ' ' + style['default-circle-btn'];
   }
-
   if (extClass !== undefined) {
     buttonStyle += ' ' + extClass;
   }
-
   if (margin === undefined) {
     margin = [0, 0, 20, 0];
   }
-
   return /*#__PURE__*/React.createElement("div", {
     onClick: !buttonDisabled ? onClick : null,
     className: buttonStyle,
@@ -183,42 +157,36 @@ var ButtonCircle = function ButtonCircle(_ref2) {
     }
   }, /*#__PURE__*/React.createElement(Icon, null));
 };
-
 var Input = function Input(_ref3) {
   var label = _ref3.label,
-      type = _ref3.type,
-      size = _ref3.size,
-      placeHolder = _ref3.placeHolder,
-      onChange = _ref3.onChange,
-      onClick = _ref3.onClick,
-      disabled = _ref3.disabled,
-      value = _ref3.value,
-      defaultValue = _ref3.defaultValue,
-      extClass = _ref3.extClass,
-      theme = _ref3.theme,
-      margin = _ref3.margin;
+    type = _ref3.type,
+    size = _ref3.size,
+    placeHolder = _ref3.placeHolder,
+    onChange = _ref3.onChange,
+    onClick = _ref3.onClick,
+    disabled = _ref3.disabled,
+    value = _ref3.value,
+    defaultValue = _ref3.defaultValue,
+    extClass = _ref3.extClass,
+    theme = _ref3.theme,
+    margin = _ref3.margin;
   var inputPlaceHolder = '';
   var inputDisabled = false;
   var formStyle = style['label-input'];
   var inputStyle = '';
-
   if (type === undefined) {
     type = 'text';
   }
-
   if (theme === 'dark') {
     formStyle += ' ' + style['dark-mode'];
     inputStyle += ' ' + style['dark-mode'];
   }
-
   if (extClass !== undefined) {
     formStyle += ' ' + extClass;
   }
-
   if (placeHolder) {
     inputPlaceHolder = placeHolder;
   }
-
   if (size !== undefined) {
     if (size === 'm') {
       inputStyle += ' ' + style['medium-size'];
@@ -228,17 +196,14 @@ var Input = function Input(_ref3) {
       inputStyle += ' ' + style['xsmall-size'];
     }
   }
-
   if (disabled === true) {
     inputDisabled = disabled;
     formStyle += ' ' + style['disabled'];
     inputStyle += ' ' + style['form-disabled'];
   }
-
   if (margin === undefined) {
     margin = [0, 0, 20, 0];
   }
-
   return /*#__PURE__*/React.createElement("label", {
     className: formStyle,
     style: {
@@ -258,42 +223,36 @@ var Input = function Input(_ref3) {
     className: inputStyle
   }));
 };
-
 var InputArea = function InputArea(_ref4) {
   var label = _ref4.label,
-      type = _ref4.type,
-      size = _ref4.size,
-      placeHolder = _ref4.placeHolder,
-      onChange = _ref4.onChange,
-      onClick = _ref4.onClick,
-      disabled = _ref4.disabled,
-      value = _ref4.value,
-      defaultValue = _ref4.defaultValue,
-      extClass = _ref4.extClass,
-      theme = _ref4.theme,
-      margin = _ref4.margin;
+    type = _ref4.type,
+    size = _ref4.size,
+    placeHolder = _ref4.placeHolder,
+    onChange = _ref4.onChange,
+    onClick = _ref4.onClick,
+    disabled = _ref4.disabled,
+    value = _ref4.value,
+    defaultValue = _ref4.defaultValue,
+    extClass = _ref4.extClass,
+    theme = _ref4.theme,
+    margin = _ref4.margin;
   var inputPlaceHolder = '';
   var inputDisabled = false;
   var formStyle = style['label-input'] + ' ' + style['input-area'];
   var inputStyle = '';
-
   if (type === undefined) {
     type = 'text';
   }
-
   if (theme === 'dark') {
     formStyle += ' ' + style['dark-mode'];
     inputStyle += ' ' + style['dark-mode'];
   }
-
   if (extClass !== undefined) {
     formStyle += ' ' + extClass;
   }
-
   if (placeHolder) {
     inputPlaceHolder = placeHolder;
   }
-
   if (size !== undefined) {
     if (size === 'm') {
       inputStyle += ' ' + style['medium-size'];
@@ -303,17 +262,14 @@ var InputArea = function InputArea(_ref4) {
       inputStyle += ' ' + style['xsmall-size'];
     }
   }
-
   if (disabled === true) {
     inputDisabled = disabled;
     formStyle += ' ' + style['disabled'];
     inputStyle += ' ' + style['form-disabled'];
   }
-
   if (margin === undefined) {
     margin = [0, 0, 20, 0];
   }
-
   return /*#__PURE__*/React.createElement("label", {
     className: formStyle,
     style: {
@@ -333,41 +289,34 @@ var InputArea = function InputArea(_ref4) {
     className: inputStyle
   }));
 };
-
 var CheckBox = function CheckBox(_ref5) {
   var label = _ref5.label,
-      desc = _ref5.desc,
-      onClick = _ref5.onClick,
-      checked = _ref5.checked,
-      value = _ref5.value,
-      disabled = _ref5.disabled,
-      extClass = _ref5.extClass,
-      theme = _ref5.theme,
-      margin = _ref5.margin;
+    desc = _ref5.desc,
+    onClick = _ref5.onClick,
+    checked = _ref5.checked,
+    value = _ref5.value,
+    disabled = _ref5.disabled,
+    extClass = _ref5.extClass,
+    theme = _ref5.theme,
+    margin = _ref5.margin;
   var formStyle = style['form-checkbox'];
   var formDisabled = false;
-
   if (theme === 'dark') {
     formStyle = style['form-checkbox-dark'];
   }
-
   if (disabled === true) {
     formDisabled = true;
     formStyle += ' ' + style.disabled;
   }
-
   if (extClass !== undefined) {
     formStyle += ' ' + extClass;
   }
-
   if (margin === undefined) {
     margin = [0, 0, 20, 0];
   }
-
   if (checked === undefined) {
     checked = false;
   }
-
   return /*#__PURE__*/React.createElement("label", {
     style: {
       marginTop: margin[0],
@@ -384,41 +333,34 @@ var CheckBox = function CheckBox(_ref5) {
     defaultChecked: checked
   }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, label), desc ? /*#__PURE__*/React.createElement("p", null, desc) : null));
 };
-
 var Radio = function Radio(_ref6) {
   var label = _ref6.label,
-      desc = _ref6.desc,
-      onChange = _ref6.onChange,
-      name = _ref6.name,
-      checked = _ref6.checked,
-      disabled = _ref6.disabled,
-      extClass = _ref6.extClass,
-      theme = _ref6.theme,
-      margin = _ref6.margin;
+    desc = _ref6.desc,
+    onChange = _ref6.onChange,
+    name = _ref6.name,
+    checked = _ref6.checked,
+    disabled = _ref6.disabled,
+    extClass = _ref6.extClass,
+    theme = _ref6.theme,
+    margin = _ref6.margin;
   var formStyle = style['form-radio'];
   var formDisabled = false;
-
   if (theme === 'dark') {
     formStyle = style['form-radio-dark'];
   }
-
   if (disabled === true) {
     formDisabled = true;
     formStyle += ' ' + style.disabled;
   }
-
   if (extClass !== undefined) {
     formStyle += ' ' + extClass;
   }
-
   if (margin === undefined) {
     margin = [0, 0, 20, 0];
   }
-
   if (checked === undefined) {
     checked = false;
   }
-
   return /*#__PURE__*/React.createElement("label", {
     style: {
       marginTop: margin[0],
@@ -435,23 +377,20 @@ var Radio = function Radio(_ref6) {
     defaultChecked: checked
   }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, label), desc ? /*#__PURE__*/React.createElement("p", null, desc) : null));
 };
-
 var Alert = function Alert(_ref7) {
   var visibility = _ref7.visibility,
-      extClass = _ref7.extClass,
-      hideAlert = _ref7.hideAlert,
-      label = _ref7.label,
-      body = _ref7.body,
-      buttonText = _ref7.buttonText,
-      Icon = _ref7.Icon,
-      type = _ref7.type,
-      loading = _ref7.loading;
+    extClass = _ref7.extClass,
+    hideAlert = _ref7.hideAlert,
+    label = _ref7.label,
+    body = _ref7.body,
+    buttonText = _ref7.buttonText,
+    Icon = _ref7.Icon,
+    type = _ref7.type,
+    loading = _ref7.loading;
   var render = null;
-
   if (buttonText === undefined) {
     buttonText = 'Ok';
   }
-
   if (type === 'success') {
     Icon = function Icon() {
       return /*#__PURE__*/React.createElement(bs.BsCheckCircle, {
@@ -463,7 +402,6 @@ var Alert = function Alert(_ref7) {
       });
     };
   }
-
   if (visibility === true) {
     render = /*#__PURE__*/React.createElement("div", {
       className: style['popup-overlay'] + ' ' + extClass,
@@ -495,34 +433,28 @@ var Alert = function Alert(_ref7) {
       margin: [0, 0, 0, 0]
     }))));
   }
-
   return render;
 };
-
 var Confirm = function Confirm(_ref8) {
   var visibility = _ref8.visibility,
-      confirmAction = _ref8.confirmAction,
-      label = _ref8.label,
-      primaryButtonText = _ref8.primaryButtonText,
-      secondaryButtonText = _ref8.secondaryButtonText,
-      primaryButtonStyle = _ref8.primaryButtonStyle,
-      Icon = _ref8.Icon,
-      loading = _ref8.loading;
+    confirmAction = _ref8.confirmAction,
+    label = _ref8.label,
+    primaryButtonText = _ref8.primaryButtonText,
+    secondaryButtonText = _ref8.secondaryButtonText,
+    primaryButtonStyle = _ref8.primaryButtonStyle,
+    Icon = _ref8.Icon,
+    loading = _ref8.loading;
   var render = null;
   var button1Style = 'primary';
-
   if (primaryButtonStyle === 'red') {
     button1Style = 'color';
   }
-
   if (primaryButtonText === undefined) {
     primaryButtonText = 'Yes';
   }
-
   if (secondaryButtonText === undefined) {
     secondaryButtonText = 'No';
   }
-
   if (visibility === true) {
     render = /*#__PURE__*/React.createElement("div", {
       className: style['popup-overlay'],
@@ -567,41 +499,35 @@ var Confirm = function Confirm(_ref8) {
       margin: [0, 0, 0, 0]
     }))));
   }
-
   return render;
 };
-
 var Modal = function Modal(_ref9) {
   var visibility = _ref9.visibility,
-      width = _ref9.width,
-      headerLabel = _ref9.headerLabel,
-      bodyLabel = _ref9.bodyLabel,
-      HeaderComponent = _ref9.HeaderComponent,
-      BodyComponent = _ref9.BodyComponent,
-      FooterComponent = _ref9.FooterComponent,
-      hideModal = _ref9.hideModal,
-      closeButton = _ref9.closeButton,
-      showHeader = _ref9.showHeader,
-      showFooter = _ref9.showFooter,
-      primaryButtonAction = _ref9.primaryButtonAction,
-      primaryButtonText = _ref9.primaryButtonText,
-      secondaryButtonAction = _ref9.secondaryButtonAction,
-      secondaryButtonText = _ref9.secondaryButtonText,
-      loading = _ref9.loading;
+    width = _ref9.width,
+    headerLabel = _ref9.headerLabel,
+    bodyLabel = _ref9.bodyLabel,
+    HeaderComponent = _ref9.HeaderComponent,
+    BodyComponent = _ref9.BodyComponent,
+    FooterComponent = _ref9.FooterComponent,
+    hideModal = _ref9.hideModal,
+    closeButton = _ref9.closeButton,
+    showHeader = _ref9.showHeader,
+    showFooter = _ref9.showFooter,
+    primaryButtonAction = _ref9.primaryButtonAction,
+    primaryButtonText = _ref9.primaryButtonText,
+    secondaryButtonAction = _ref9.secondaryButtonAction,
+    secondaryButtonText = _ref9.secondaryButtonText,
+    loading = _ref9.loading;
   var render = null;
-
   if (width === undefined) {
     width = 320;
   }
-
   if (primaryButtonText === undefined) {
     primaryButtonText = 'Yes';
   }
-
   if (secondaryButtonText === undefined) {
     secondaryButtonText = 'No';
   }
-
   if (visibility === true) {
     render = /*#__PURE__*/React.createElement("div", {
       className: style['popup-overlay'],
@@ -643,19 +569,18 @@ var Modal = function Modal(_ref9) {
       style: {
         fill: '#67697C'
       },
-      onClick: hideModal
+      onClick: hideModal,
+      id: "modal-close-button"
     }) : null));
   }
-
   return render;
 };
-
 var MobileHeader = function MobileHeader(_ref10) {
   var label = _ref10.label,
-      buttonAction = _ref10.buttonAction,
-      buttonVisibility = _ref10.buttonVisibility,
-      extClass = _ref10.extClass,
-      alwaysVisible = _ref10.alwaysVisible;
+    buttonAction = _ref10.buttonAction,
+    buttonVisibility = _ref10.buttonVisibility,
+    extClass = _ref10.extClass,
+    alwaysVisible = _ref10.alwaysVisible;
   return /*#__PURE__*/React.createElement("div", {
     style: alwaysVisible ? {
       display: 'flex'
@@ -668,28 +593,23 @@ var MobileHeader = function MobileHeader(_ref10) {
     }
   }) : null, label);
 };
-
 var Banner = function Banner(_ref11) {
   var visibility = _ref11.visibility,
-      Content = _ref11.Content,
-      backgroundColor = _ref11.backgroundColor,
-      buttonText = _ref11.buttonText,
-      hideAction = _ref11.hideAction,
-      buttonAction = _ref11.buttonAction,
-      extClass = _ref11.extClass,
-      position = _ref11.position;
+    Content = _ref11.Content,
+    backgroundColor = _ref11.backgroundColor,
+    buttonText = _ref11.buttonText,
+    hideAction = _ref11.hideAction,
+    buttonAction = _ref11.buttonAction,
+    extClass = _ref11.extClass,
+    position = _ref11.position;
   var bannerPosition = [80, 0];
-
   if (position) {
     bannerPosition = position;
   }
-
   var bannerColor = '#D9005C';
-
   if (backgroundColor) {
     bannerColor = backgroundColor;
   }
-
   var contentType = typeof Content;
   return visibility ? /*#__PURE__*/React.createElement("div", {
     style: {
